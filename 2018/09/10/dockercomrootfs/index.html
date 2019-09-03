@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html >
+<head>
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="dongs365">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="dongs365" />
 
 
 
@@ -22,13 +22,12 @@
 <meta property="og:url" content="http://blog.mooom.top/2018/09/10/dockercomrootfs/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="docker 容器转镜像、拷贝文件、查看容器文件结构。">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:07:25.632Z">
+<meta property="og:updated_time" content="2018-09-11T03:46:12.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker命令 rootfs命">
 <meta name="twitter:description" content="docker 容器转镜像、拷贝文件、查看容器文件结构。">
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -74,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: undefined
     }
 </script>
 
@@ -100,7 +99,7 @@
     </script>
 
 
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -312,20 +311,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <script src="\assets\js\APlayer.min.js"> </script><p>docker 容器转镜像、拷贝文件、查看容器文件结构。<a id="more"></a></p>
+        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>docker 容器转镜像、拷贝文件、查看容器文件结构。<a id="more"></a></p>
 <h2 id="docker-commit"><a href="#docker-commit" class="headerlink" title="docker commit"></a>docker commit</h2><p>从容器创建一个新的镜像。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-a :提交的镜像作者；</span><br><span class="line">-c :使用Dockerfile指令来创建镜像；</span><br><span class="line">-m :提交时的说明文字；</span><br><span class="line">-p :在commit时，将容器暂停。</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-a :提交的镜像作者；</div><div class="line">-c :使用Dockerfile指令来创建镜像；</div><div class="line">-m :提交时的说明文字；</div><div class="line">-p :在commit时，将容器暂停。</div></pre></td></tr></table></figure>
 <h2 id="docker-cp"><a href="#docker-cp" class="headerlink" title="docker cp"></a>docker cp</h2><p>用于容器与主机之间的数据拷贝。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-</span><br><span class="line">docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH</span><br><span class="line">```   </span><br><span class="line">### OPTIONS说明：</span><br></pre></td></tr></table></figure>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-</div><div class="line">docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH</div><div class="line">```   </div><div class="line">### OPTIONS说明：</div></pre></td></tr></table></figure>
+<p>-L :保持源目标中的链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">## docker diff</div><div class="line">检查容器里文件结构的更改。</div><div class="line">### 语法</div></pre></td></tr></table></figure></p>
+<p>docker diff [OPTIONS] CONTAINER<br>```</p>
 
-<p>-L :保持源目标中的链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## docker diff</span><br><span class="line">检查容器里文件结构的更改。</span><br><span class="line">### 语法</span><br></pre></td></tr></table></figure>
-
-<p>docker diff [OPTIONS] CONTAINER</p>
-<pre><code></code></pre>
       
     </div>
     
@@ -336,7 +330,7 @@
         <p><span>本文标题:</span><a href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2018-09-10, 11:48:37</p>
-        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p><span>最后更新:</span>2018-09-11, 11:46:12</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/10/dockercomrootfs/" title="docker命令 rootfs命">http://blog.mooom.top/2018/09/10/dockercomrootfs/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2018/09/10/dockercomrootfs/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -442,7 +436,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
 
 
 
@@ -456,10 +450,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2019 dongs365
+                2015-2018 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         

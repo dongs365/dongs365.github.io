@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html >
+<head>
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="dongs365">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="dongs365" />
 
 
 
@@ -22,13 +22,12 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/08/02/mysql-mmmcs/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="MySQL-mmm有关mmm_control参数测试">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:07:25.641Z">
+<meta property="og:updated_time" content="2017-08-02T13:25:54.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-mmm参数说明">
 <meta name="twitter:description" content="MySQL-mmm有关mmm_control参数测试">
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -74,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: undefined
     }
 </script>
 
@@ -100,7 +99,7 @@
     </script>
 
 
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -312,8 +311,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <script src="\assets\js\APlayer.min.js"> </script><p>MySQL-mmm有关mmm_control参数测试</p>
-<a id="more"></a>
+        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>MySQL-mmm有关mmm_control参数测试<br><a id="more"></a></p>
 <h2 id="MMM主要功能脚本介绍："><a href="#MMM主要功能脚本介绍：" class="headerlink" title="MMM主要功能脚本介绍："></a>MMM主要功能脚本介绍：</h2><h3 id="mmm-mond"><a href="#mmm-mond" class="headerlink" title="mmm_mond"></a>mmm_mond</h3><p>  监控进程，负责所有的监控工作，决定和处理所有节点角色活动。</p>
 <h3 id="mmm-agent"><a href="#mmm-agent" class="headerlink" title="mmm_agent"></a>mmm_agent</h3><p>  运行在每个mysql服务器上的代理进程，完成监控的探针工作和执行简单的远端服务设置。</p>
 <h3 id="mmm-control"><a href="#mmm-control" class="headerlink" title="mmm_control"></a>mmm_control</h3><p>   一个简单的脚本，提供管理mmm_mond进程的命令。</p>
@@ -329,43 +327,21 @@
 <h4 id="MANUAL-MODE"><a href="#MANUAL-MODE" class="headerlink" title="MANUAL MODE"></a>MANUAL MODE</h4><p>Moniter会自动把负载均衡的角色分配给对应主机，但是不会自动的把角色从失败的主机上移除。你可以通过move_role来手工移除。</p>
 <h4 id="WAIT-MODE"><a href="#WAIT-MODE" class="headerlink" title="WAIT MODE"></a>WAIT MODE</h4><p>类似manual模式，但是当两个master都是online状态或者超过了wait_for_other_master的时间，将被改变为ACTIVE模式。</p>
 <h4 id="PASSIVE-MODE"><a href="#PASSIVE-MODE" class="headerlink" title="PASSIVE MODE"></a>PASSIVE MODE</h4><p>在被动模式下，monitor不改变roles，也不更新状态文件和发送任何信息给agents。在被动模式下你可以使用set_ip来改变roles，但是这些改变在monitor切换到ACTIVE或者MANUAL模式(set_active or set_manual)前都不会生效,在启动的roles发生冲突将会进入被动模式。你可以分析问题，修复reole信息，然后切换到ACTIVE或者MANUAL模式，也可以手动进去被动模式，使用 set_passive。</p>
-<h3 id="mmm-control有关参数解析"><a href="#mmm-control有关参数解析" class="headerlink" title="mmm_control有关参数解析"></a>mmm_control有关参数解析</h3><h4 id="help"><a href="#help" class="headerlink" title="help"></a>help</h4><p>查看有关帮助的信息help</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control help</span><br></pre></td></tr></table></figure>
-
-<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><p>ping monitor的进程，确定进程是否存在：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control ping</span><br></pre></td></tr></table></figure>
-
-<p>如果monitor宕掉后，再ping就会报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control ping</span><br></pre></td></tr></table></figure>
-
+<h3 id="mmm-control有关参数解析"><a href="#mmm-control有关参数解析" class="headerlink" title="mmm_control有关参数解析"></a>mmm_control有关参数解析</h3><h4 id="help"><a href="#help" class="headerlink" title="help"></a>help</h4><p>查看有关帮助的信息help<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control help</div></pre></td></tr></table></figure></p>
+<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><p>ping monitor的进程，确定进程是否存在：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control ping</div></pre></td></tr></table></figure></p>
+<p>如果monitor宕掉后，再ping就会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control ping</div></pre></td></tr></table></figure></p>
 <p>ERROR: Can’tconnect to monitor daemon!</p>
-<h4 id="show"><a href="#show" class="headerlink" title="show"></a>show</h4><p>查看当前的集群状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control show</span><br></pre></td></tr></table></figure>
-
+<h4 id="show"><a href="#show" class="headerlink" title="show"></a>show</h4><p>查看当前的集群状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control show</div></pre></td></tr></table></figure></p>
 <h4 id="checks"><a href="#checks" class="headerlink" title="checks"></a>checks</h4><p> 查看指定node或者所有主机的制定状态或者所有状态。<br>mmm_control checks<br>mmm_control checks db1<br>mmm_control checks db1 rep_backlog</p>
 <p>mmm_control checks db1 rep_backlog</p>
-<h4 id="set-online-host"><a href="#set-online-host" class="headerlink" title="set_online host"></a>set_online host</h4><p>set_online的作用是把node的状态从AWAITING_RECOVERY或者ADMIN_OFFLINE恢复到ONLINE，如下：db2主机被重启过，查看状态：<br>当db2检查时候后，所有的角色都被移动到db1和db3、db4上，现在我们恢复db2到online状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control set_online db2</span><br></pre></td></tr></table></figure>
-
+<h4 id="set-online-host"><a href="#set-online-host" class="headerlink" title="set_online host"></a>set_online host</h4><p>set_online的作用是把node的状态从AWAITING_RECOVERY或者ADMIN_OFFLINE恢复到ONLINE，如下：db2主机被重启过，查看状态：<br>当db2检查时候后，所有的角色都被移动到db1和db3、db4上，现在我们恢复db2到online状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control set_online db2</div></pre></td></tr></table></figure></p>
 <p>然后查看db2的状态如下：</p>
-<h4 id="set-offline-host"><a href="#set-offline-host" class="headerlink" title="set_offline host"></a>set_offline host</h4><p>set_offline会将一个node手动的置为ADMIN_OFFLINE状态，这个node上的所有角色将会被移除，并且停止mysql复制。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control set_offline db1</span><br></pre></td></tr></table></figure>
-
-<h4 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h4><p>打印出当前monitor的运行模式，如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control mode</span><br></pre></td></tr></table></figure>
-
-<h4 id="set-active-主动模式"><a href="#set-active-主动模式" class="headerlink" title="set_active 主动模式"></a>set_active 主动模式</h4><p>切换monitor进程为ACTIVE模式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control set_active</span><br></pre></td></tr></table></figure>
-
-<h4 id="set-manual-收到模式"><a href="#set-manual-收到模式" class="headerlink" title="set_manual 收到模式"></a>set_manual 收到模式</h4><p>切换monitor 进程为manual模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control set_manual</span><br></pre></td></tr></table></figure>
-
-<h4 id="set-passive-被动模式"><a href="#set-passive-被动模式" class="headerlink" title="set_passive 被动模式"></a>set_passive 被动模式</h4><p>切换monitor进程为passive模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control set_passive</span><br></pre></td></tr></table></figure>
-
-<h4 id="move-role"><a href="#move-role" class="headerlink" title="move_role"></a>move_role</h4><p>通过move可以在集群nodes之间切换独一的角色，这个命令在passive模式下不可用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmm_control move_role writer db1</span><br></pre></td></tr></table></figure>
-
+<h4 id="set-offline-host"><a href="#set-offline-host" class="headerlink" title="set_offline host"></a>set_offline host</h4><p>set_offline会将一个node手动的置为ADMIN_OFFLINE状态，这个node上的所有角色将会被移除，并且停止mysql复制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control set_offline db1</div></pre></td></tr></table></figure></p>
+<h4 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h4><p>打印出当前monitor的运行模式，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control mode</div></pre></td></tr></table></figure></p>
+<h4 id="set-active-主动模式"><a href="#set-active-主动模式" class="headerlink" title="set_active 主动模式"></a>set_active 主动模式</h4><p>切换monitor进程为ACTIVE模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control set_active</div></pre></td></tr></table></figure></p>
+<h4 id="set-manual-收到模式"><a href="#set-manual-收到模式" class="headerlink" title="set_manual 收到模式"></a>set_manual 收到模式</h4><p>切换monitor 进程为manual模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control set_manual</div></pre></td></tr></table></figure></p>
+<h4 id="set-passive-被动模式"><a href="#set-passive-被动模式" class="headerlink" title="set_passive 被动模式"></a>set_passive 被动模式</h4><p>切换monitor进程为passive模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control set_passive</div></pre></td></tr></table></figure></p>
+<h4 id="move-role"><a href="#move-role" class="headerlink" title="move_role"></a>move_role</h4><p>通过move可以在集群nodes之间切换独一的角色，这个命令在passive模式下不可用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mmm_control move_role writer db1</div></pre></td></tr></table></figure></p>
 <p>修改为手动模式，或者自动模式即可使用角色切换命令：<br>例如：我们把writer角色切换到db1主机上：</p>
 <h4 id="move-role-force-role-host"><a href="#move-role-force-role-host" class="headerlink" title="move_role   -force role host"></a>move_role   -force role host</h4><p>可以将active_master_role角色切换给一个状态为replication_fall或者replication_delay的主机上，使用这个命令一定要小心，这个命令在被动模式下无效。</p>
 <h4 id="set-ip-ip-host"><a href="#set-ip-ip-host" class="headerlink" title="set_ip ip host"></a>set_ip ip host</h4><p>set_ip可以用来在被动模式下操作角色，改变在monitor改变为active或者manual模式后生效。</p>
@@ -373,7 +349,11 @@
 <h4 id="COMMENTS"><a href="#COMMENTS" class="headerlink" title="COMMENTS"></a>COMMENTS</h4><p>每行以#开头的行被认为是注释，并且这行会被忽略。注释不可以出现在一行注释的后面。注释前面的空格将会被忽略。</p>
 <h3 id="This-is-acomment"><a href="#This-is-acomment" class="headerlink" title="This is acomment"></a>This is acomment</h3><p>debug 1 # this isno comment<br>7.2.2 VARIABLES<br>debug 0</p>
 <h4 id="SPECIFYING-MULTIPLE-VALUES"><a href="#SPECIFYING-MULTIPLE-VALUES" class="headerlink" title="SPECIFYING MULTIPLE VALUES"></a>SPECIFYING MULTIPLE VALUES</h4><p>有些变量你需要指定多个值：<br>ips192.168.0.51,192.168.0.52,192.168.0.53</p>
-<h4 id="SECTIONS"><a href="#SECTIONS" class="headerlink" title="SECTIONS"></a>SECTIONS</h4><p>配置文件分为两种类型的sestions：唯一的和命名的。<br>唯一型的sections，例如：<br><monitor><br>ip 127.0.0.1<br>&lt; /monitor&gt;<br>定义一个空的唯一型sections也是可以的：<br><socket><br>命名型的sections,例如：<br><host db1><br>ip 192.168.0.31<br>&lt; /host&gt;<br>你当然也可以定义一个空的命名型sections：<br><checkmysql><br>default sections<br>默认sections里面的值会被其他所有的sections继承。<br>定义所有的主机角色都是’slave’<br>&lt; hostdefault&gt;<br>mode slave<br>&lt; /host&gt;</checkmysql></host></socket></monitor></p>
+<h4 id="SECTIONS"><a href="#SECTIONS" class="headerlink" title="SECTIONS"></a>SECTIONS</h4><p>配置文件分为两种类型的sestions：唯一的和命名的。<br>唯一型的sections，例如：</p>
+<p><monitor><br>ip 127.0.0.1<br>&lt; /monitor&gt;<br>定义一个空的唯一型sections也是可以的：</monitor></p>
+<p><socket><br>命名型的sections,例如：</socket></p>
+<p><host db1=""><br>ip 192.168.0.31<br>&lt; /host&gt;<br>你当然也可以定义一个空的命名型sections：</host></p>
+<p><checkmysql><br>default sections<br>默认sections里面的值会被其他所有的sections继承。<br>定义所有的主机角色都是’slave’<br>&lt; hostdefault&gt;<br>mode slave<br>&lt; /host&gt;</checkmysql></p>
 <h4 id="INCLUDES"><a href="#INCLUDES" class="headerlink" title="INCLUDES"></a>INCLUDES</h4><p>可以通过include导入其他配置文件<br>include common.conf</p>
 <h3 id="CONFIGURATION-VARIABLES"><a href="#CONFIGURATION-VARIABLES" class="headerlink" title="CONFIGURATION VARIABLES"></a>CONFIGURATION VARIABLES</h3><h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>this<br>描述：这个主机的名字<br>默认值：无<br>Used by：agent，tools<br>debug<br>描述：是否开启debug模式<br>可用值：true/yes/1/on flase/no/0/off<br>默认值：0<br>Used by：agent，monitor<br>active_master_role<br>描述：哪个角色名被定义为活动的master<br>默认值：无<br>Used by：agent，monitor<br>max_kill_retries<br>描述：尝试杀死进程的最大次数，用来防止在切换active_master_role时产生多余的写操作<br>默认值：10<br>Used by：agent<br>default_copy_method<br>描述：默认拷贝方法的名字<br>默认值：无<br>Used by：tools<br>clone_dirs<br>描述：保存mysql日志和数据的路径(相对逻辑卷的挂载点)<br>默认值：无<br>Used by：tools</p>
 <h4 id="MONITORSECTION"><a href="#MONITORSECTION" class="headerlink" title="MONITORSECTION"></a>MONITORSECTION</h4><p>monitor section需要mmm_mond和mmm_control<br>IP<br>描述：mmm_mond进程监听哪个IP<br>默认值：无<br>Used by：control，monitor<br>port<br>描述：mmm_mond进程监听哪个端口<br>默认值：无<br>Used by：control，monitor<br>pid_path<br>描述：pid-file的路径<br>默认值：无<br>Used by： monitor<br>bin_path<br>描述：包含mmm二进制文件的目录<br>默认值：无<br>Used by：agent<br>status_path<br>描述：状态文件的位置<br>默认值：无<br>Used by：monitor<br>ping_interval<br>描述：网络监测的间隔时间<br>默认值：1s<br>Used by：monitor<br>ping_ips<br>描述：网络监测使用的Ips<br>默认值：<br>Used by：monitor<br>flap_duration<br>描述：抖动检测持续的时间<br>默认值：3600<br>Used by：monitor<br>flap_count<br>描述：在flap_duration时间内出现flap_count次宕机，我们就认为这个时机为抖动状态<br>默认值：3<br>Used by：monitor<br>auto_set_online<br>描述：从AWAITING_RECOVERY状态切换到ONLINE状态的时间，单位秒，0=disabled<br>默认值：0<br>Used by：monitor<br>kill_host_bin<br>描述：当一个主机不可达，并且角色不能从一个agent上删除，就需要一个二进制命令用来杀掉一个主机，这个命令需要你自己定制，第一个参数是主机，第二个参数是ping的状态(1 ok,0 not ok)<br>默认值：bin_path/monitor/kill_host<br>Used by：monitor<br>careful_startup<br>描述：小心的启动，例如当writer角色被配置在多个主机上时进入passive模式<br>Allowed values：true/yes/1/onfalse/no/0/off<br>默认值：0<br>Used by：monitor<br>mode<br>描述：monitor默认的模式<br>Allowed values：activemanual wait passive<br>默认值：active<br>Used by：monitor<br>wait_for_other_master<br>描述：从WAIT模式切换到ACTIVE模式时，等待其他master切换到ONLINE状态的时间，单位秒，0=永远等待<br>默认值：120<br>Used by：monitor</p>
@@ -395,7 +375,7 @@
         <p><span>本文标题:</span><a href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-08-02, 18:42:08</p>
-        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p><span>最后更新:</span>2017-08-02, 21:25:54</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/02/mysql-mmmcs/" title="mysql-mmm参数说明">http://blog.mooom.top/2017/08/02/mysql-mmmcs/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/08/02/mysql-mmmcs/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -501,7 +481,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
 
 
 
@@ -515,10 +495,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2019 dongs365
+                2015-2018 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         

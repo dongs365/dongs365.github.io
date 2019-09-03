@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html >
+<head>
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="dongs365">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="dongs365" />
 
 
 
@@ -22,13 +22,12 @@
 <meta property="og:url" content="http://blog.mooom.top/2018/09/10/dockercomrqcz/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="Docker 容器容器操作 查看、获取 。">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:07:25.633Z">
+<meta property="og:updated_time" content="2018-09-11T03:41:48.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker命令 容器操作">
 <meta name="twitter:description" content="Docker 容器容器操作 查看、获取 。">
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -74,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: undefined
     }
 </script>
 
@@ -100,7 +99,7 @@
     </script>
 
 
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -312,48 +311,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <script src="\assets\js\APlayer.min.js"> </script><p>Docker 容器容器操作 查看、获取 。 <a id="more"></a></p>
-<!-- more -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>Docker 容器容器操作 查看、获取 。 <a id="more"></a><br><!-- more --></p>
 <h2 id="docker-ps"><a href="#docker-ps" class="headerlink" title="docker ps"></a>docker ps</h2><p>列出容器</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps [OPTIONS]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-a :显示所有的容器，包括未运行的。</span><br><span class="line">-f :根据条件过滤显示的内容。</span><br><span class="line">--format :指定返回值的模板文件。</span><br><span class="line">-l :显示最近创建的容器。</span><br><span class="line">-n :列出最近创建的n个容器。</span><br><span class="line">--no-trunc :不截断输出。</span><br><span class="line">-q :静默模式，只显示容器编号。</span><br><span class="line">-s :显示总的文件大小。</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps [OPTIONS]</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">-a :显示所有的容器，包括未运行的。</div><div class="line">-f :根据条件过滤显示的内容。</div><div class="line">--format :指定返回值的模板文件。</div><div class="line">-l :显示最近创建的容器。</div><div class="line">-n :列出最近创建的n个容器。</div><div class="line">--no-trunc :不截断输出。</div><div class="line">-q :静默模式，只显示容器编号。</div><div class="line">-s :显示总的文件大小。</div></pre></td></tr></table></figure>
 <h2 id="docker-inspect"><a href="#docker-inspect" class="headerlink" title="docker inspect :"></a>docker inspect :</h2><p>获取容器/镜像的元数据。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect [OPTIONS] NAME|ID [NAME|ID...]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-1"><a href="#OPTIONS说明：-1" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f :指定返回值的模板文件。</span><br><span class="line">-s :显示总的文件大小。</span><br><span class="line">--type :为指定类型返回JSON。</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect [OPTIONS] NAME|ID [NAME|ID...]</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明：-1"><a href="#OPTIONS说明：-1" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-f :指定返回值的模板文件。</div><div class="line">-s :显示总的文件大小。</div><div class="line">--type :为指定类型返回JSON。</div></pre></td></tr></table></figure>
 <h2 id="docker-top"><a href="#docker-top" class="headerlink" title="docker top"></a>docker top</h2><p>查看容器中运行的进程信息，支持 ps 命令参数。</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top [OPTIONS] CONTAINER [ps OPTIONS]</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker top [OPTIONS] CONTAINER [ps OPTIONS]</div></pre></td></tr></table></figure>
 <p>容器运行时不一定有/bin/bash终端来交互执行top命令，而且容器还不一定有top命令，可以使用docker top来实现查看container中正在运行的进程。</p>
 <h2 id="docker-attach"><a href="#docker-attach" class="headerlink" title="docker attach"></a>docker attach</h2><p>连接到正在运行中的容器。</p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach [OPTIONS] CONTAINER</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker attach [OPTIONS] CONTAINER</div></pre></td></tr></table></figure>
 <p>要attach上去的容器必须正在运行，可以同时连接上同一个container来共享屏幕（与screen命令的attach类似）。<br>官方文档中说attach后可以通过CTRL-C来detach，但实际上经过我的测试，如果container当前在运行bash，CTRL-C自然是当前行的输入，没有退出；如果container当前正在前台运行进程，如输出nginx的access.log日志，CTRL-C不仅会导致退出容器，而且还stop了。这不是我们想要的，detach的意思按理应该是脱离容器终端，但容器依然运行。好在attach是可以带上–sig-proxy=false来确保CTRL-D或CTRL-C不会关闭容器。</p>
 <h2 id="docker-events"><a href="#docker-events" class="headerlink" title="docker events"></a>docker events</h2><p>从服务器获取实时事件</p>
-<p>###语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker events [OPTIONS]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-2"><a href="#OPTIONS说明：-2" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f ：根据条件过滤事件；</span><br><span class="line">--since ：从指定的时间戳后显示所有事件;</span><br><span class="line">--until ：流水时间显示到指定的时间为止；</span><br></pre></td></tr></table></figure>
-
+<p>###语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker events [OPTIONS]</div></pre></td></tr></table></figure></p>
+<h3 id="OPTIONS说明：-2"><a href="#OPTIONS说明：-2" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-f ：根据条件过滤事件；</div><div class="line">--since ：从指定的时间戳后显示所有事件;</div><div class="line">--until ：流水时间显示到指定的时间为止；</div></pre></td></tr></table></figure>
 <h2 id="docker-logs"><a href="#docker-logs" class="headerlink" title="docker logs"></a>docker logs</h2><p>获取容器的日志</p>
-<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [OPTIONS] CONTAINER</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-3"><a href="#OPTIONS说明：-3" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-f : 跟踪日志输出</span><br><span class="line">--since :显示某个开始时间的所有日志</span><br><span class="line">-t : 显示时间戳</span><br><span class="line">--tail :仅列出最新N条容器日志</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker logs [OPTIONS] CONTAINER</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明：-3"><a href="#OPTIONS说明：-3" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-f : 跟踪日志输出</div><div class="line">--since :显示某个开始时间的所有日志</div><div class="line">-t : 显示时间戳</div><div class="line">--tail :仅列出最新N条容器日志</div></pre></td></tr></table></figure>
 <h2 id="docker-wait"><a href="#docker-wait" class="headerlink" title="docker wait"></a>docker wait</h2><p>阻塞运行直到容器停止，然后打印出它的退出代码。</p>
-<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker wait [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker wait [OPTIONS] CONTAINER [CONTAINER...]</div></pre></td></tr></table></figure>
 <h2 id="docker-export"><a href="#docker-export" class="headerlink" title="docker export"></a>docker export</h2><p>将文件系统作为一个tar归档文件导出到STDOUT。</p>
-<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker export [OPTIONS] CONTAINER</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-4"><a href="#OPTIONS说明：-4" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-o :将输入内容写到文件。</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker export [OPTIONS] CONTAINER</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明：-4"><a href="#OPTIONS说明：-4" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-o :将输入内容写到文件。</div></pre></td></tr></table></figure>
 <h2 id="docker-port"><a href="#docker-port" class="headerlink" title="docker port"></a>docker port</h2><p>列出指定的容器的端口映射，或者查找将PRIVATE_PORT NAT到面向公众的端口。</p>
-<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker port [OPTIONS] CONTAINER [PRIVATE_PORT[/PROTO]]</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker port [OPTIONS] CONTAINER [PRIVATE_PORT[/PROTO]]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,7 +348,7 @@
         <p><span>本文标题:</span><a href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2018-09-10, 11:48:14</p>
-        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p><span>最后更新:</span>2018-09-11, 11:41:48</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/10/dockercomrqcz/" title="docker命令 容器操作">http://blog.mooom.top/2018/09/10/dockercomrqcz/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2018/09/10/dockercomrqcz/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -471,7 +454,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
 
 
 
@@ -485,10 +468,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2019 dongs365
+                2015-2018 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         

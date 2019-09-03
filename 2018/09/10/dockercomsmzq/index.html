@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html >
+<head>
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="dongs365">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="dongs365" />
 
 
 
@@ -22,13 +22,12 @@
 <meta property="og:url" content="http://blog.mooom.top/2018/09/10/dockercomsmzq/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="Docker 容器生命周期管理 创建、启动、停止、重启、结束、暂停、恢复、创建、执行 。">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:07:25.634Z">
+<meta property="og:updated_time" content="2018-09-11T03:41:49.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker命令 生命周期">
 <meta name="twitter:description" content="Docker 容器生命周期管理 创建、启动、停止、重启、结束、暂停、恢复、创建、执行 。">
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -74,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: undefined
     }
 </script>
 
@@ -100,7 +99,7 @@
     </script>
 
 
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -312,39 +311,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <script src="\assets\js\APlayer.min.js"> </script><p>Docker 容器生命周期管理 创建、启动、停止、重启、结束、暂停、恢复、创建、执行 。 <a id="more"></a></p>
-<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>创建一个新的容器并运行一个命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</span><br><span class="line">-d: 后台运行容器，并返回容器ID；</span><br><span class="line">-i: 以交互模式运行容器，通常与 -t 同时使用；</span><br><span class="line">-p: 端口映射，格式为：主机(宿主)端口:容器端口</span><br><span class="line">-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</span><br><span class="line">--name=&quot;nginx-lb&quot;: 为容器指定一个名称；</span><br><span class="line">--dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；</span><br><span class="line">--dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；</span><br><span class="line">-h &quot;mars&quot;: 指定容器的hostname；</span><br><span class="line">-e username=&quot;ritchie&quot;: 设置环境变量；</span><br><span class="line">--env-file=[]: 从指定文件读入环境变量；</span><br><span class="line">--cpuset=&quot;0-2&quot; or --cpuset=&quot;0,1,2&quot;: 绑定容器到指定CPU运行；</span><br><span class="line">-m :设置容器使用内存最大值；</span><br><span class="line">--net=&quot;bridge&quot;: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</span><br><span class="line">--link=[]: 添加链接到另一个容器；</span><br><span class="line">--expose=[]: 开放一个端口或一组端口；</span><br></pre></td></tr></table></figure>
-
+        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>Docker 容器生命周期管理 创建、启动、停止、重启、结束、暂停、恢复、创建、执行 。 <a id="more"></a></p>
+<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>创建一个新的容器并运行一个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</div></pre></td></tr></table></figure></p>
+<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</div><div class="line">-d: 后台运行容器，并返回容器ID；</div><div class="line">-i: 以交互模式运行容器，通常与 -t 同时使用；</div><div class="line">-p: 端口映射，格式为：主机(宿主)端口:容器端口</div><div class="line">-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</div><div class="line">--name=&quot;nginx-lb&quot;: 为容器指定一个名称；</div><div class="line">--dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；</div><div class="line">--dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；</div><div class="line">-h &quot;mars&quot;: 指定容器的hostname；</div><div class="line">-e username=&quot;ritchie&quot;: 设置环境变量；</div><div class="line">--env-file=[]: 从指定文件读入环境变量；</div><div class="line">--cpuset=&quot;0-2&quot; or --cpuset=&quot;0,1,2&quot;: 绑定容器到指定CPU运行；</div><div class="line">-m :设置容器使用内存最大值；</div><div class="line">--net=&quot;bridge&quot;: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</div><div class="line">--link=[]: 添加链接到另一个容器；</div><div class="line">--expose=[]: 开放一个端口或一组端口；</div></pre></td></tr></table></figure>
 <h2 id="Docker-start-stop-restart"><a href="#Docker-start-stop-restart" class="headerlink" title="Docker start/stop/restart"></a>Docker start/stop/restart</h2><h3 id="docker-start"><a href="#docker-start" class="headerlink" title="docker start"></a>docker start</h3><p>启动一个或多少已经被停止的容器</p>
 <h3 id="docker-stop"><a href="#docker-stop" class="headerlink" title="docker stop"></a>docker stop</h3><p>停止一个运行中的容器</p>
 <h3 id="docker-restart"><a href="#docker-restart" class="headerlink" title="docker restart"></a>docker restart</h3><p>重启容器</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker start [OPTIONS] CONTAINER [CONTAINER...]</span><br><span class="line">docker stop [OPTIONS] CONTAINER [CONTAINER...]</span><br><span class="line">docker restart [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker start [OPTIONS] CONTAINER [CONTAINER...]</div><div class="line">docker stop [OPTIONS] CONTAINER [CONTAINER...]</div><div class="line">docker restart [OPTIONS] CONTAINER [CONTAINER...]</div></pre></td></tr></table></figure>
 <h2 id="docker-kill"><a href="#docker-kill" class="headerlink" title="docker kill"></a>docker kill</h2><p>杀掉一个运行中的容器。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker kill [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-1"><a href="#OPTIONS说明：-1" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-s :向容器发送一个信号</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker kill [OPTIONS] CONTAINER [CONTAINER...]</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明：-1"><a href="#OPTIONS说明：-1" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-s :向容器发送一个信号</div></pre></td></tr></table></figure>
 <h2 id="docker-rm"><a href="#docker-rm" class="headerlink" title="docker rm"></a>docker rm</h2><p>删除一个或多少容器</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-2"><a href="#OPTIONS说明：-2" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f :通过SIGKILL信号强制删除一个运行中的容器</span><br><span class="line">-l :移除容器间的网络连接，而非容器本身</span><br><span class="line">-v :-v 删除与容器关联的卷</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm [OPTIONS] CONTAINER [CONTAINER...]</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明：-2"><a href="#OPTIONS说明：-2" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-f :通过SIGKILL信号强制删除一个运行中的容器</div><div class="line">-l :移除容器间的网络连接，而非容器本身</div><div class="line">-v :-v 删除与容器关联的卷</div></pre></td></tr></table></figure>
 <h2 id="docker-pause"><a href="#docker-pause" class="headerlink" title="docker pause"></a>docker pause</h2><p>暂停容器中所有的进程。</p>
 <h2 id="docker-unpause"><a href="#docker-unpause" class="headerlink" title="docker unpause"></a>docker unpause</h2><p>恢复容器中所有的进程。</p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pause [OPTIONS] CONTAINER [CONTAINER...]</span><br><span class="line">docker unpause [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker pause [OPTIONS] CONTAINER [CONTAINER...]</div><div class="line">docker unpause [OPTIONS] CONTAINER [CONTAINER...]</div></pre></td></tr></table></figure>
 <h2 id="docker-create"><a href="#docker-create" class="headerlink" title="docker create"></a>docker create</h2><p>创建一个新的容器但不启动它<br>语法同 docker run</p>
-<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker create [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker create [OPTIONS] IMAGE [COMMAND] [ARG...]</div></pre></td></tr></table></figure>
 <h2 id="docker-exec"><a href="#docker-exec" class="headerlink" title="docker exec"></a>docker exec</h2><p>在运行的容器中执行命令</p>
-<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</span><br></pre></td></tr></table></figure>
-
-<h3 id="OPTIONS说明：-3"><a href="#OPTIONS说明：-3" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-d :分离模式: 在后台运行</span><br><span class="line">-i :即使没有附加也保持STDIN 打开</span><br><span class="line">-t :分配一个伪终端</span><br></pre></td></tr></table></figure>
-
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</div></pre></td></tr></table></figure>
+<h3 id="OPTIONS说明：-3"><a href="#OPTIONS说明：-3" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-d :分离模式: 在后台运行</div><div class="line">-i :即使没有附加也保持STDIN 打开</div><div class="line">-t :分配一个伪终端</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -356,7 +343,7 @@
         <p><span>本文标题:</span><a href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2018-09-10, 11:19:27</p>
-        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p><span>最后更新:</span>2018-09-11, 11:41:49</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/10/dockercomsmzq/" title="docker命令 生命周期">http://blog.mooom.top/2018/09/10/dockercomsmzq/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2018/09/10/dockercomsmzq/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -462,7 +449,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
 
 
 
@@ -476,10 +463,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2019 dongs365
+                2015-2018 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         

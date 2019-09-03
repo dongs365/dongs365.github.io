@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html >
+<head>
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="dongs365">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="dongs365" />
 
 
 
@@ -22,13 +22,12 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/07/31/GoogleAuthenticator/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="Google Authenticator项目包括为多个移动平台实现一次性密码生成器。一次性密码是由开放认证计划）开发的开放标准生成的 。可以和linux结合进行登陆二次验证，进行动态验证。">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:07:25.626Z">
+<meta property="og:updated_time" content="2017-07-31T03:12:13.215Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GoogleAuthenticator系统二次验证">
 <meta name="twitter:description" content="Google Authenticator项目包括为多个移动平台实现一次性密码生成器。一次性密码是由开放认证计划）开发的开放标准生成的 。可以和linux结合进行登陆二次验证，进行动态验证。">
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -74,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: undefined
     }
 </script>
 
@@ -100,7 +99,7 @@
     </script>
 
 
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -312,33 +311,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <script src="\assets\js\APlayer.min.js"> </script><p>Google Authenticator项目包括为多个移动平台实现一次性密码生成器。一次性密码是由开放认证计划）开发的开放标准生成的 。可以和linux结合进行登陆二次验证，进行动态验证。</p>
-<a id="more"></a>
-<h4 id="服务端安装"><a href="#服务端安装" class="headerlink" title="服务端安装"></a>服务端安装</h4><p>apt自动安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libpam-google-authenticator</span><br></pre></td></tr></table></figure>
-
-<p>github手动安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/google/google-authenticator.git</span><br><span class="line">cd google-authenticator/libpam/</span><br><span class="line">./bootstrap.sh</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<h4 id="安装QrenCode"><a href="#安装QrenCode" class="headerlink" title="安装QrenCode"></a>安装QrenCode</h4><p>命令行下生成二维码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.gz</span><br><span class="line">tar zxvf qrencode-3.4.4.tar.gz</span><br><span class="line">cd qrencode</span><br><span class="line">apt-get install pkg-config pkgconfi libpng-dev</span><br><span class="line">./configure --prefix=/usr &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
+        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>Google Authenticator项目包括为多个移动平台实现一次性密码生成器。一次性密码是由开放认证计划）开发的开放标准生成的 。可以和linux结合进行登陆二次验证，进行动态验证。<br><a id="more"></a></p>
+<h4 id="服务端安装"><a href="#服务端安装" class="headerlink" title="服务端安装"></a>服务端安装</h4><p>apt自动安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install libpam-google-authenticator</div></pre></td></tr></table></figure></p>
+<p>github手动安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/google/google-authenticator.git</div><div class="line">cd google-authenticator/libpam/</div><div class="line">./bootstrap.sh</div><div class="line">./configure</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
+<h4 id="安装QrenCode"><a href="#安装QrenCode" class="headerlink" title="安装QrenCode"></a>安装QrenCode</h4><p>命令行下生成二维码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.gz</div><div class="line">tar zxvf qrencode-3.4.4.tar.gz</div><div class="line">cd qrencode</div><div class="line">apt-get install pkg-config pkgconfi libpng-dev</div><div class="line">./configure --prefix=/usr &amp;&amp; make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
 <h4 id="手机端安装"><a href="#手机端安装" class="headerlink" title="手机端安装"></a>手机端安装</h4><p>手机端搜索安装Google Authenticator安装即可</p>
-<p><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=zh_CN" target="_blank" rel="noopener">android版</a></p>
-<p><a href="https://itunes.apple.com/cn/app/google-authenticator/id388497605" target="_blank" rel="noopener">iOS版</a></p>
-<h4 id="生成二维码"><a href="#生成二维码" class="headerlink" title="生成二维码"></a>生成二维码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">google-authenticator</span><br><span class="line">Do you want authentication tokens to be time-based (y/n) y</span><br></pre></td></tr></table></figure>
-
-<p>生成二维码和5个备用验证码(记的保存)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Do you want me to update your &quot;/home/ubuntu/.google_authenticator&quot; file (y/n) y  </span><br><span class="line">提示是否要更新验证文件，选择y</span><br><span class="line"></span><br><span class="line">Do you want to disallow multiple uses of the same authentication</span><br><span class="line">token? This restricts you to one login about every 30s, but it increases</span><br><span class="line">your chances to notice or even prevent man-in-the-middle attacks (y/n) y</span><br><span class="line">您是否拒绝多次使用相同的身份验证令牌？y</span><br><span class="line"></span><br><span class="line">By default, tokens are good for 30 seconds and in order to compensate for</span><br><span class="line">possible time-skew between the client and the server, we allow an extra</span><br><span class="line">token before and after the current time. If you experience problems with poor</span><br><span class="line">time synchronization, you can increase the window from its default</span><br><span class="line">size of 1:30min to about 4min. Do you want to do so (y/n) y</span><br><span class="line">默认动态验证码在30秒内有效，由于客户端和服务器可能会存在时间差，可将时间增加到最长4分钟，是否要这么做 y</span><br><span class="line"></span><br><span class="line">If the computer that you are logging into isn&apos;t hardened against brute-force</span><br><span class="line">login attempts, you can enable rate-limiting for the authentication module.</span><br><span class="line">By default, this limits attackers to no more than 3 login attempts every 30s.</span><br><span class="line">Do you want to enable rate-limiting (y/n) y</span><br><span class="line">是否限制尝试次数，每30秒只能尝试最多3次，这里选择y进行限制</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加到手机端"><a href="#添加到手机端" class="headerlink" title="添加到手机端"></a>添加到手机端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">打开手机Authenticator</span><br><span class="line">扫描条形码或者手动输入验证码，绑定刚刚生成的密钥</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改登陆配置"><a href="#修改登陆配置" class="headerlink" title="修改登陆配置"></a>修改登陆配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pam.d/sshd</span><br><span class="line">添加 auth required pam_google_authenticator.so</span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">查  找 ChallengeResponseAuthentication no</span><br><span class="line">修改为 ChallengeResponseAuthentication yes</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启ssh服务"><a href="#重启ssh服务" class="headerlink" title="重启ssh服务"></a>重启ssh服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
-
-<h4 id="验证登陆"><a href="#验证登陆" class="headerlink" title="验证登陆"></a>验证登陆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入账号之后，会提示输入验证码</span><br><span class="line">login as: ubuntu</span><br><span class="line">Using keyboard-interactive authentication.</span><br><span class="line">Verification code:</span><br><span class="line">打开手机上的Google身份验证器，输入动态验证码，回车。</span><br></pre></td></tr></table></figure>
-
+<p><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=zh_CN" target="_blank" rel="external">android版</a></p>
+<p><a href="https://itunes.apple.com/cn/app/google-authenticator/id388497605" target="_blank" rel="external">iOS版</a></p>
+<h4 id="生成二维码"><a href="#生成二维码" class="headerlink" title="生成二维码"></a>生成二维码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">google-authenticator</div><div class="line">Do you want authentication tokens to be time-based (y/n) y</div></pre></td></tr></table></figure>
+<p>生成二维码和5个备用验证码(记的保存)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Do you want me to update your &quot;/home/ubuntu/.google_authenticator&quot; file (y/n) y  </div><div class="line">提示是否要更新验证文件，选择y</div><div class="line"></div><div class="line">Do you want to disallow multiple uses of the same authentication</div><div class="line">token? This restricts you to one login about every 30s, but it increases</div><div class="line">your chances to notice or even prevent man-in-the-middle attacks (y/n) y</div><div class="line">您是否拒绝多次使用相同的身份验证令牌？y</div><div class="line"></div><div class="line">By default, tokens are good for 30 seconds and in order to compensate for</div><div class="line">possible time-skew between the client and the server, we allow an extra</div><div class="line">token before and after the current time. If you experience problems with poor</div><div class="line">time synchronization, you can increase the window from its default</div><div class="line">size of 1:30min to about 4min. Do you want to do so (y/n) y</div><div class="line">默认动态验证码在30秒内有效，由于客户端和服务器可能会存在时间差，可将时间增加到最长4分钟，是否要这么做 y</div><div class="line"></div><div class="line">If the computer that you are logging into isn&apos;t hardened against brute-force</div><div class="line">login attempts, you can enable rate-limiting for the authentication module.</div><div class="line">By default, this limits attackers to no more than 3 login attempts every 30s.</div><div class="line">Do you want to enable rate-limiting (y/n) y</div><div class="line">是否限制尝试次数，每30秒只能尝试最多3次，这里选择y进行限制</div></pre></td></tr></table></figure></p>
+<h4 id="添加到手机端"><a href="#添加到手机端" class="headerlink" title="添加到手机端"></a>添加到手机端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">打开手机Authenticator</div><div class="line">扫描条形码或者手动输入验证码，绑定刚刚生成的密钥</div></pre></td></tr></table></figure>
+<h4 id="修改登陆配置"><a href="#修改登陆配置" class="headerlink" title="修改登陆配置"></a>修改登陆配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vim /etc/pam.d/sshd</div><div class="line">添加 auth required pam_google_authenticator.so</div><div class="line"></div><div class="line">vim /etc/ssh/sshd_config</div><div class="line">查  找 ChallengeResponseAuthentication no</div><div class="line">修改为 ChallengeResponseAuthentication yes</div></pre></td></tr></table></figure>
+<h4 id="重启ssh服务"><a href="#重启ssh服务" class="headerlink" title="重启ssh服务"></a>重启ssh服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service ssh restart</div></pre></td></tr></table></figure>
+<h4 id="验证登陆"><a href="#验证登陆" class="headerlink" title="验证登陆"></a>验证登陆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">输入账号之后，会提示输入验证码</div><div class="line">login as: ubuntu</div><div class="line">Using keyboard-interactive authentication.</div><div class="line">Verification code:</div><div class="line">打开手机上的Google身份验证器，输入动态验证码，回车。</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -350,7 +335,7 @@
         <p><span>本文标题:</span><a href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-07-31, 10:21:57</p>
-        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p><span>最后更新:</span>2017-07-31, 11:12:13</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/31/GoogleAuthenticator/" title="GoogleAuthenticator系统二次验证">http://blog.mooom.top/2017/07/31/GoogleAuthenticator/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/07/31/GoogleAuthenticator/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -456,7 +441,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
 
 
 
@@ -470,10 +455,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2019 dongs365
+                2015-2018 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
