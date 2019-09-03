@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
+
+
+
+<meta name="description" content="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。">
+<meta name="keywords" content="shell,命令,网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iptables">
+<meta property="og:url" content="http://blog.mooom.top/2017/07/26/iptables/index.html">
+<meta property="og:site_name" content="MOOOM">
+<meta property="og:description" content="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iptables">
+<meta name="twitter:description" content="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>iptables | MOOOM</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?61c244d51a80bcf25a7d76377e2a8fa9";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">dongs365</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">生活中的那一秒</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友链</li>
+                        
+                        
+                        <li>关于</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主 页</a></li>
+                        
+                            <li><a href="/archives/">文 章</a></li>
+                        
+                            <li><a href="/tags/">标 签</a></li>
+                        
+                            <li><a href="/about/">关 于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:dongs365" title="Email"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/offices/">offices</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安全/">安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文言文/">文言文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li></ul>
+                    </div>
+                </section>
+                
+
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">吃 饱 没 事 干</div>
+                </section>
+                
+            </div>
+
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">dongs365</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">dongs365</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">生活中的那一秒</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主 页</a></li>
+                
+                    <li><a href="/archives/">文 章</a></li>
+                
+                    <li><a href="/tags/">标 签</a></li>
+                
+                    <li><a href="/about/">关 于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:dongs365" title="Email"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友链" about="关于"/>
+</nav>
+      <div class="body-wrap"><article id="post-iptables" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/26/iptables/" class="article-date">
+      <time datetime="2017-07-26T06:29:15.000Z" itemprop="datePublished">2017-07-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iptables
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令/">命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <script src="\assets\js\APlayer.min.js"> </script><h4 id="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"><a href="#iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。" class="headerlink" title="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"></a>iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。</h4><a id="more"></a>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables(选项)(参数)</span><br></pre></td></tr></table></figure>
+
+<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-t&lt;表&gt;：指定要操纵的表；</span><br><span class="line">-A：向规则链中添加条目；</span><br><span class="line">-D：从规则链中删除条目；</span><br><span class="line">-i：向规则链中插入条目；</span><br><span class="line">-R：替换规则链中的条目；</span><br><span class="line">-L：显示规则链中已有的条目；</span><br><span class="line">-F：清楚规则链中已有的条目；</span><br><span class="line">-Z：清空规则链中的数据包计算器和字节计数器；</span><br><span class="line">-N：创建新的用户自定义规则链；</span><br><span class="line">-P：定义规则链中的默认目标；</span><br><span class="line">-h：显示帮助信息；</span><br><span class="line">-p：指定要匹配的数据包协议类型；</span><br><span class="line">-s：指定要匹配的数据包源ip地址；</span><br><span class="line">-j&lt;目标&gt;：指定要跳转的目标；</span><br><span class="line">-i&lt;网络接口&gt;：指定数据包进入本机的网络接口；</span><br><span class="line">-o&lt;网络接口&gt;：指定数据包要离开本机所使用的网络接口。</span><br></pre></td></tr></table></figure>
+
+<h1 id="iptables命令选项输入顺序："><a href="#iptables命令选项输入顺序：" class="headerlink" title="iptables命令选项输入顺序："></a>iptables命令选项输入顺序：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t 表名 &lt;-A/I/D/R&gt; 规则链名 [规则号] &lt;-i/o 网卡名&gt; -p 协议名 &lt;-s 源IP/源子网&gt; --sport 源端口 &lt;-d 目标IP/目标子网&gt; --dport 目标端口 -j 动作</span><br></pre></td></tr></table></figure>
+
+<h1 id="表名包括："><a href="#表名包括：" class="headerlink" title="表名包括："></a>表名包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">raw：高级功能，如：网址过滤。</span><br><span class="line">mangle：数据包修改（QOS），用于实现服务质量。</span><br><span class="line">net：地址转换，用于网关路由器。</span><br><span class="line">filter：包过滤，用于防火墙规则。</span><br></pre></td></tr></table></figure>
+
+<h1 id="规则链名包括："><a href="#规则链名包括：" class="headerlink" title="规则链名包括："></a>规则链名包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INPUT链：处理输入数据包。</span><br><span class="line">OUTPUT链：处理输出数据包。</span><br><span class="line">PORWARD链：处理转发数据包。</span><br><span class="line">PREROUTING链：用于目标地址转换（DNAT）。</span><br><span class="line">POSTOUTING链：用于源地址转换（SNAT）。</span><br></pre></td></tr></table></figure>
+
+<h1 id="动作包括："><a href="#动作包括：" class="headerlink" title="动作包括："></a>动作包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">accept：接收数据包。</span><br><span class="line">DROP：丢弃数据包。</span><br><span class="line">REDIRECT：重定向、映射、透明代理。</span><br><span class="line">SNAT：源地址转换。</span><br><span class="line">DNAT：目标地址转换。</span><br><span class="line">MASQUERADE：IP伪装（NAT），用于ADSL。</span><br><span class="line">LOG：日志记录。</span><br></pre></td></tr></table></figure>
+
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h1 id="清除已有iptables规则"><a href="#清除已有iptables规则" class="headerlink" title="清除已有iptables规则"></a>清除已有iptables规则</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br><span class="line">iptables -X</span><br><span class="line">iptables -Z</span><br></pre></td></tr></table></figure>
+
+<h1 id="开放指定的端口"><a href="#开放指定的端口" class="headerlink" title="开放指定的端口"></a>开放指定的端口</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT #允许本地回环接口(即运行本机访问本机)</span><br><span class="line">iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT #允许已建立的或相关连的通行</span><br><span class="line">iptables -A OUTPUT -j ACCEPT #允许所有本机向外的访问</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT #允许访问22端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT #允许访问80端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT #允许ftp服务的21端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 20 -j ACCEPT #允许FTP服务的20端口</span><br><span class="line">iptables -A INPUT -j reject #禁止其他未允许的规则访问</span><br><span class="line">iptables -A FORWARD -j REJECT #禁止其他未允许的规则访问</span><br></pre></td></tr></table></figure>
+
+<h1 id="屏蔽IP"><a href="#屏蔽IP" class="headerlink" title="屏蔽IP"></a>屏蔽IP</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -s 123.45.6.7 -j DROP #屏蔽单个IP的命令</span><br><span class="line">iptables -I INPUT -s 123.0.0.0/8 -j DROP #封整个段即从123.0.0.1到123.255.255.254的命令</span><br><span class="line">iptables -I INPUT -s 124.45.0.0/16 -j DROP #封IP段即从123.45.0.1到123.45.255.254的命令</span><br><span class="line">iptables -I INPUT -s 123.45.6.0/24 -j DROP #封IP段即从123.45.6.1到123.45.6.254的命令是</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看已添加的iptables规则"><a href="#查看已添加的iptables规则" class="headerlink" title="查看已添加的iptables规则"></a>查看已添加的iptables规则</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -n -v Chain INPUT (policy DROP 48106 packets, 2690K bytes)</span><br><span class="line">pkts bytes target prot opt in out source destination</span><br><span class="line">5075 589K ACCEPT all -- lo * 0.0.0.0/0 0.0.0.0/0</span><br><span class="line">191K 90M ACCEPT tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:22</span><br><span class="line">1499K 133M ACCEPT tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:80</span><br><span class="line">4364K 6351M ACCEPT all -- * * 0.0.0.0/0 0.0.0.0/0 state RELATED,ESTABLISHED</span><br><span class="line">6256 327K ACCEPT icmp -- * * 0.0.0.0/0 0.0.0.0/0</span><br><span class="line"></span><br><span class="line">Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)</span><br><span class="line">pkts bytes target prot opt in out source destination</span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT 3382K packets, 1819M bytes)</span><br><span class="line">pkts bytes target prot opt in out source destination</span><br><span class="line">5075 589K ACCEPT all -- * lo 0.0.0.0/0 0.0.0.0/0</span><br></pre></td></tr></table></figure>
+
+<h1 id="删除已添加的iptables规则"><a href="#删除已添加的iptables规则" class="headerlink" title="删除已添加的iptables规则"></a>删除已添加的iptables规则</h1><h1 id="将所有iptables以序号标记显示，执行："><a href="#将所有iptables以序号标记显示，执行：" class="headerlink" title="将所有iptables以序号标记显示，执行："></a>将所有iptables以序号标记显示，执行：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -n --line-numbers</span><br></pre></td></tr></table></figure>
+
+<h1 id="比如要删除INPUT里序号为8的规则，执行："><a href="#比如要删除INPUT里序号为8的规则，执行：" class="headerlink" title="比如要删除INPUT里序号为8的规则，执行："></a>比如要删除INPUT里序号为8的规则，执行：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -D INPUT 8</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/07/26/iptables/">iptables</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
+        <p><span>发布时间:</span>2017-07-26, 14:29:15</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/26/iptables/" title="iptables">http://blog.mooom.top/2017/07/26/iptables/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/07/26/iptables/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/07/26/curl/">
+                    curl
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/07/25/tcpdump/">
+                    tcpdump
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"><span class="toc-number">1.</span> <span class="toc-text">iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-number"></span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选项"><span class="toc-number"></span> <span class="toc-text">选项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iptables命令选项输入顺序："><span class="toc-number"></span> <span class="toc-text">iptables命令选项输入顺序：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表名包括："><span class="toc-number"></span> <span class="toc-text">表名包括：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#规则链名包括："><span class="toc-number"></span> <span class="toc-text">规则链名包括：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动作包括："><span class="toc-number"></span> <span class="toc-text">动作包括：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例"><span class="toc-number"></span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#清除已有iptables规则"><span class="toc-number"></span> <span class="toc-text">清除已有iptables规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开放指定的端口"><span class="toc-number"></span> <span class="toc-text">开放指定的端口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#屏蔽IP"><span class="toc-number"></span> <span class="toc-text">屏蔽IP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看已添加的iptables规则"><span class="toc-number"></span> <span class="toc-text">查看已添加的iptables规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除已添加的iptables规则"><span class="toc-number"></span> <span class="toc-text">删除已添加的iptables规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将所有iptables以序号标记显示，执行："><span class="toc-number"></span> <span class="toc-text">将所有iptables以序号标记显示，执行：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#比如要删除INPUT里序号为8的规则，执行："><span class="toc-number"></span> <span class="toc-text">比如要删除INPUT里序号为8的规则，执行：</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"iptables　| MOOOM　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/26/curl/" title="上一篇: curl">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/07/25/tcpdump/" title="下一篇: tcpdump">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i>
+                2015-2019 dongs365
+            </div>
+            <div class="footer-right">
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+    <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</footer>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 7;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "O(∩_∩)O 快来点我~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "*@ο@* 终于点了~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+  </div>
+</body>
+</html>
