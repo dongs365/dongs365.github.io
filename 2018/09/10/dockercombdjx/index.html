@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -21,12 +21,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2018/09/10/dockercombdjx/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="docker 本地镜像查看、删除、修改、build、历史、导出、导入。">
-<meta property="og:updated_time" content="2018-09-11T03:58:38.451Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker命令 本地镜像管理">
 <meta name="twitter:description" content="docker 本地镜像查看、删除、修改、build、历史、导出、导入。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -72,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -98,7 +99,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -116,6 +117,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -302,27 +310,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>docker 本地镜像查看、删除、修改、build、历史、导出、导入。<a id="more"></a></p>
+        <p>docker 本地镜像查看、删除、修改、build、历史、导出、导入。<a id="more"></a></p>
 <h2 id="docker-images"><a href="#docker-images" class="headerlink" title="docker images"></a>docker images</h2><p>列出本地镜像。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images [OPTIONS] [REPOSITORY[:TAG]]</div></pre></td></tr></table></figure>
-<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-a :列出本地所有的镜像（含中间映像层，默认情况下，过滤掉中间映像层）；</div><div class="line">--digests :显示镜像的摘要信息；</div><div class="line">-f :显示满足条件的镜像；</div><div class="line">--format :指定返回值的模板文件；</div><div class="line">--no-trunc :显示完整的镜像信息；</div><div class="line">-q :只显示镜像ID。</div></pre></td></tr></table></figure>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images [OPTIONS] [REPOSITORY[:TAG]]</span><br></pre></td></tr></table></figure>
+
+<h3 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-a :列出本地所有的镜像（含中间映像层，默认情况下，过滤掉中间映像层）；</span><br><span class="line">--digests :显示镜像的摘要信息；</span><br><span class="line">-f :显示满足条件的镜像；</span><br><span class="line">--format :指定返回值的模板文件；</span><br><span class="line">--no-trunc :显示完整的镜像信息；</span><br><span class="line">-q :只显示镜像ID。</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-rmi"><a href="#docker-rmi" class="headerlink" title="docker rmi"></a>docker rmi</h2><p>删除本地一个或多少镜像。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rmi [OPTIONS] IMAGE [IMAGE...]</div></pre></td></tr></table></figure>
-<h3 id="OPTIONS说明：-1"><a href="#OPTIONS说明：-1" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-f :强制删除；</div><div class="line">--no-prune :不移除该镜像的过程镜像，默认移除；</div></pre></td></tr></table></figure>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi [OPTIONS] IMAGE [IMAGE...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="OPTIONS说明：-1"><a href="#OPTIONS说明：-1" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-f :强制删除；</span><br><span class="line">--no-prune :不移除该镜像的过程镜像，默认移除；</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-tag"><a href="#docker-tag" class="headerlink" title="docker tag"></a>docker tag</h2><p>标记本地镜像，将其归入某一仓库。</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]</div></pre></td></tr></table></figure>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-build"><a href="#docker-build" class="headerlink" title="docker build"></a>docker build</h2><p>命令用于使用 Dockerfile 创建镜像。</p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build [OPTIONS] PATH | URL | -</div></pre></td></tr></table></figure>
-<h3 id="OPTIONS说明：-2"><a href="#OPTIONS说明：-2" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">--build-arg=[] :设置镜像创建时的变量；</div><div class="line">--cpu-shares :设置 cpu 使用权重；</div><div class="line">--cpu-period :限制 CPU CFS周期；</div><div class="line">--cpu-quota :限制 CPU CFS配额；</div><div class="line">--cpuset-cpus :指定使用的CPU id；</div><div class="line">--cpuset-mems :指定使用的内存 id；</div><div class="line">--disable-content-trust :忽略校验，默认开启；</div><div class="line">-f :指定要使用的Dockerfile路径；</div><div class="line">--force-rm :设置镜像过程中删除中间容器；</div><div class="line">--isolation :使用容器隔离技术；</div><div class="line">--label=[] :设置镜像使用的元数据；</div><div class="line">-m :设置内存最大值；</div><div class="line">--memory-swap :设置Swap的最大值为内存+swap，&quot;-1&quot;表示不限swap；</div><div class="line">--no-cache :创建镜像的过程不使用缓存；</div><div class="line">--pull :尝试去更新镜像的新版本；</div><div class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</div><div class="line">--rm :设置镜像成功后删除中间容器；</div><div class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</div><div class="line">--ulimit :Ulimit配置。</div><div class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</div><div class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</div></pre></td></tr></table></figure>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build [OPTIONS] PATH | URL | -</span><br></pre></td></tr></table></figure>
+
+<h3 id="OPTIONS说明：-2"><a href="#OPTIONS说明：-2" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">--build-arg=[] :设置镜像创建时的变量；</span><br><span class="line">--cpu-shares :设置 cpu 使用权重；</span><br><span class="line">--cpu-period :限制 CPU CFS周期；</span><br><span class="line">--cpu-quota :限制 CPU CFS配额；</span><br><span class="line">--cpuset-cpus :指定使用的CPU id；</span><br><span class="line">--cpuset-mems :指定使用的内存 id；</span><br><span class="line">--disable-content-trust :忽略校验，默认开启；</span><br><span class="line">-f :指定要使用的Dockerfile路径；</span><br><span class="line">--force-rm :设置镜像过程中删除中间容器；</span><br><span class="line">--isolation :使用容器隔离技术；</span><br><span class="line">--label=[] :设置镜像使用的元数据；</span><br><span class="line">-m :设置内存最大值；</span><br><span class="line">--memory-swap :设置Swap的最大值为内存+swap，&quot;-1&quot;表示不限swap；</span><br><span class="line">--no-cache :创建镜像的过程不使用缓存；</span><br><span class="line">--pull :尝试去更新镜像的新版本；</span><br><span class="line">--quiet, -q :安静模式，成功后只输出镜像 ID；</span><br><span class="line">--rm :设置镜像成功后删除中间容器；</span><br><span class="line">--shm-size :设置/dev/shm的大小，默认值是64M；</span><br><span class="line">--ulimit :Ulimit配置。</span><br><span class="line">--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</span><br><span class="line">--network: 默认 default。在构建期间设置RUN指令的网络模式</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-history"><a href="#docker-history" class="headerlink" title="docker history"></a>docker history</h2><p>查看指定镜像的创建历史。</p>
-<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker history [OPTIONS] IMAGE</div></pre></td></tr></table></figure>
-<h3 id="OPTIONS说明：-3"><a href="#OPTIONS说明：-3" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-H :以可读的格式打印镜像大小和日期，默认为true；</div><div class="line">--no-trunc :显示完整的提交记录；</div><div class="line">-q :仅列出提交记录ID。</div></pre></td></tr></table></figure>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker history [OPTIONS] IMAGE</span><br></pre></td></tr></table></figure>
+
+<h3 id="OPTIONS说明：-3"><a href="#OPTIONS说明：-3" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-H :以可读的格式打印镜像大小和日期，默认为true；</span><br><span class="line">--no-trunc :显示完整的提交记录；</span><br><span class="line">-q :仅列出提交记录ID。</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-save"><a href="#docker-save" class="headerlink" title="docker save"></a>docker save</h2><p>将指定镜像保存成 tar 归档文件。</p>
-<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker save [OPTIONS] IMAGE [IMAGE...]</div></pre></td></tr></table></figure>
-<h3 id="OPTIONS说明：-4"><a href="#OPTIONS说明：-4" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-o :输出到的文件。</div></pre></td></tr></table></figure>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save [OPTIONS] IMAGE [IMAGE...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="OPTIONS说明：-4"><a href="#OPTIONS说明：-4" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-o :输出到的文件。</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-import"><a href="#docker-import" class="headerlink" title="docker import"></a>docker import</h2><p>从归档文件中创建镜像。</p>
-<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]</div></pre></td></tr></table></figure>
-<h3 id="OPTIONS说明：-5"><a href="#OPTIONS说明：-5" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-c :应用docker 指令创建镜像；</div><div class="line">-m :提交时的说明文字；</div></pre></td></tr></table></figure>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]</span><br></pre></td></tr></table></figure>
+
+<h3 id="OPTIONS说明：-5"><a href="#OPTIONS说明：-5" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-c :应用docker 指令创建镜像；</span><br><span class="line">-m :提交时的说明文字；</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -334,7 +355,7 @@
         <p><span>本文标题:</span><a href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2018-09-10, 11:49:01</p>
-        <p><span>最后更新:</span>2018-09-11, 11:58:38</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/10/dockercombdjx/" title="docker命令 本地镜像管理">http://blog.mooom.top/2018/09/10/dockercombdjx/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2018/09/10/dockercombdjx/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -440,7 +461,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -454,10 +475,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -565,7 +586,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -22,12 +22,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/07/25/tcpdump/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。">
-<meta property="og:updated_time" content="2017-07-26T06:57:40.980Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcpdump">
 <meta name="twitter:description" content="tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,7 +100,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -117,6 +118,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -311,9 +319,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h4 id="tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。"><a href="#tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。" class="headerlink" title="tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。"></a>tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。</h4><a id="more"></a>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tcpdump(选项)</div></pre></td></tr></table></figure>
-<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">-a：尝试将网络和广播地址转换成名称；</div><div class="line">-c&lt;数据包数目&gt;：收到指定的数据包数目后，就停止进行倾倒操作；</div><div class="line">-d：把编译过的数据包编码转换成可阅读的格式，并倾倒到标准输出；</div><div class="line">-dd：把编译过的数据包编码转换成C语言的格式，并倾倒到标准输出；</div><div class="line">-ddd：把编译过的数据包编码转换成十进制数字的格式，并倾倒到标准输出；</div><div class="line">-e：在每列倾倒资料上显示连接层级的文件头；</div><div class="line">-f：用数字显示网际网络地址；</div><div class="line">-F&lt;表达文件&gt;：指定内含表达方式的文件；</div><div class="line">-i&lt;网络界面&gt;：使用指定的网络截面送出数据包；</div><div class="line">-l：使用标准输出列的缓冲区；</div><div class="line">-n：不把主机的网络地址转换成名字；</div><div class="line">-N：不列出域名；</div><div class="line">-O：不将数据包编码最佳化；</div><div class="line">-p：不让网络界面进入混杂模式；</div><div class="line">-q ：快速输出，仅列出少数的传输协议信息；</div><div class="line">-r&lt;数据包文件&gt;：从指定的文件读取数据包数据；</div><div class="line">-s&lt;数据包大小&gt;：设置每个数据包的大小；</div><div class="line">-S：用绝对而非相对数值列出TCP关联数；</div><div class="line">-t：在每列倾倒资料上不显示时间戳记；</div><div class="line">-tt： 在每列倾倒资料上显示未经格式化的时间戳记；</div><div class="line">-T&lt;数据包类型&gt;：强制将表达方式所指定的数据包转译成设置的数据包类型；</div><div class="line">-v：详细显示指令执行过程；</div><div class="line">-vv：更详细显示指令执行过程；</div><div class="line">-x：用十六进制字码列出数据包资料；</div><div class="line">-w&lt;数据包文件&gt;：把数据包数据写入指定的文件。</div></pre></td></tr></table></figure>
+        <h4 id="tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。"><a href="#tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。" class="headerlink" title="tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。"></a>tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析。</h4><a id="more"></a>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump(选项)</span><br></pre></td></tr></table></figure>
+
+<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-a：尝试将网络和广播地址转换成名称；</span><br><span class="line">-c&lt;数据包数目&gt;：收到指定的数据包数目后，就停止进行倾倒操作；</span><br><span class="line">-d：把编译过的数据包编码转换成可阅读的格式，并倾倒到标准输出；</span><br><span class="line">-dd：把编译过的数据包编码转换成C语言的格式，并倾倒到标准输出；</span><br><span class="line">-ddd：把编译过的数据包编码转换成十进制数字的格式，并倾倒到标准输出；</span><br><span class="line">-e：在每列倾倒资料上显示连接层级的文件头；</span><br><span class="line">-f：用数字显示网际网络地址；</span><br><span class="line">-F&lt;表达文件&gt;：指定内含表达方式的文件；</span><br><span class="line">-i&lt;网络界面&gt;：使用指定的网络截面送出数据包；</span><br><span class="line">-l：使用标准输出列的缓冲区；</span><br><span class="line">-n：不把主机的网络地址转换成名字；</span><br><span class="line">-N：不列出域名；</span><br><span class="line">-O：不将数据包编码最佳化；</span><br><span class="line">-p：不让网络界面进入混杂模式；</span><br><span class="line">-q ：快速输出，仅列出少数的传输协议信息；</span><br><span class="line">-r&lt;数据包文件&gt;：从指定的文件读取数据包数据；</span><br><span class="line">-s&lt;数据包大小&gt;：设置每个数据包的大小；</span><br><span class="line">-S：用绝对而非相对数值列出TCP关联数；</span><br><span class="line">-t：在每列倾倒资料上不显示时间戳记；</span><br><span class="line">-tt： 在每列倾倒资料上显示未经格式化的时间戳记；</span><br><span class="line">-T&lt;数据包类型&gt;：强制将表达方式所指定的数据包转译成设置的数据包类型；</span><br><span class="line">-v：详细显示指令执行过程；</span><br><span class="line">-vv：更详细显示指令执行过程；</span><br><span class="line">-x：用十六进制字码列出数据包资料；</span><br><span class="line">-w&lt;数据包文件&gt;：把数据包数据写入指定的文件。</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -325,7 +335,7 @@
         <p><span>本文标题:</span><a href="/2017/07/25/tcpdump/">tcpdump</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-07-25, 20:19:07</p>
-        <p><span>最后更新:</span>2017-07-26, 14:57:40</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/25/tcpdump/" title="tcpdump">http://blog.mooom.top/2017/07/25/tcpdump/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/07/25/tcpdump/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -431,7 +441,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -445,10 +455,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -556,7 +566,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 

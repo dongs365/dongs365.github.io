@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -22,12 +22,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/08/01/music/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="hexo中插入音频需要用到aplayer 和 dplayer 两个插件实现。">
-<meta property="og:updated_time" content="2018-01-30T05:59:59.770Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-04T09:49:53.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo插入音频">
 <meta name="twitter:description" content="hexo中插入音频需要用到aplayer 和 dplayer 两个插件实现。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,7 +100,9 @@
     </script>
 
 
-</head>
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"></script></head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -117,6 +120,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -311,54 +321,55 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>hexo中插入音频需要用到aplayer 和 dplayer 两个插件实现。<br><a id="more"></a><br>插件项目地址<br><a href="https://github.com/grzhan/hexo-tag-aplayer#upstream-issue" target="_blank" rel="external">hexo-tag-aplayer</a><br><a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="external">hexo-tag-dplayer</a></p>
-<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-tag-aplayer</div><div class="line">npm install hexo-tag-dplayer</div></pre></td></tr></table></figure>
-<h2 id="插入音乐"><a href="#插入音乐" class="headerlink" title="插入音乐"></a>插入音乐</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayer title author url [picture_url, narrow, autoplay, width:xxx, lrc:xxx] %&#125;</div></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">title ：音乐标题</div><div class="line">author：音乐作者</div><div class="line">url：音乐文件网址</div><div class="line">picture_url：可选，音乐图片网址</div><div class="line">narrow：可选，窄款式</div><div class="line">autoplay：可选，自动播放音乐，不支持移动浏览器</div><div class="line">width:xxx：可选，前缀width:，播放器宽度（默认值：100％）</div><div class="line">lrc:xxx：可选，前缀lrc:，LRC文件url</div></pre></td></tr></table></figure>
-<h3 id="单个播放示例"><a href="#单个播放示例" class="headerlink" title="单个播放示例"></a>单个播放示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayer &quot;Caffeine&quot; &quot;Jeff Williams&quot; &quot;caffeine.mp3&quot; &quot;picture.jpg&quot; &quot;lrc:caffeine.txt&quot; %&#125;</div></pre></td></tr></table></figure>
-<div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"><pre class="aplayer-lrc-content">[ti:Paranoid]
-[ar:Black Sabbath]
-[al:]
-[la:uk]
-[00:12]Finished with my woman 'cause she couldn't help me with my mind
-[00:18]people think I'm insane because I am frowning all the time
-[00:35]All day long I think of things but nothing seems to satisfy
-[00:41]Think I'll lose my mind if I don't find something to pacify
-[00:49]Can you help me occupy my brain?
-[00:55]Oh yeah
-[01:11]I need someone to show me the things in life that I can't find
-[01:17]I can't see the things that make true happiness, I must be blind
-[01:57]Make a joke and I will sigh and you will laugh and I will cry
-[02:03]Happiness I cannot feel and love to me is so unreal
-[02:21]And so as you hear these words telling you now of my state
-[02:27]I tell you to enjoy life I wish I could but it's too late
-</pre></div>
-		<script>
-			new APlayer({
-				element: document.getElementById("aplayer0"),
-				narrow: false,
-				autoplay: false,
-				showlrc: 2,
-				music: {
-					title: "Paranoid",
-					author: "Black Sabbath",
-					url: "http://ou01t80jk.bkt.clouddn.com/Paranoid.mp3",
-					pic: "http://p3.music.126.net/FYW8etVyFbfH8utWYk-KcA==/708085488295457.jpg?param=130y130",
-				}
-			});
-		</script>
-<h3 id="列表播放示例"><a href="#列表播放示例" class="headerlink" title="列表播放示例"></a>列表播放示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayerlist %&#125;</div><div class="line">&#123;</div><div class="line">	&quot;narrow&quot;: false,						</div><div class="line">    &quot;autoplay&quot;: true,						</div><div class="line">    &quot;mode&quot;: &quot;random&quot;,					</div><div class="line">    &quot;showlrc&quot;: 1,							</div><div class="line">    &quot;mutex&quot;: true,						</div><div class="line">    &quot;theme&quot;: &quot;#e6d0b2&quot;,						</div><div class="line">	&quot;preload&quot;: &quot;metadata&quot;,				</div><div class="line">	&quot;listmaxheight&quot;: &quot;513px&quot;,</div><div class="line">    &quot;music&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;title&quot;: &quot;CoCo&quot;,</div><div class="line">            &quot;author&quot;: &quot;Jeff Williams&quot;,</div><div class="line">            &quot;url&quot;: &quot;caffeine.mp3&quot;,</div><div class="line">            &quot;pic&quot;: &quot;caffeine.jpeg&quot;,</div><div class="line">            &quot;lrc&quot;: &quot;caffeine.txt&quot;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            &quot;title&quot;: &quot;アイロニ&quot;,</div><div class="line">            &quot;author&quot;: &quot;鹿乃&quot;,</div><div class="line">            &quot;url&quot;: &quot;irony.mp3&quot;,</div><div class="line">            &quot;pic&quot;: &quot;irony.jpg&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">&#123;% endaplayerlist %&#125;</div></pre></td></tr></table></figure>
+        <p>hexo中插入音频需要用到aplayer 和 dplayer 两个插件实现。</p>
+<a id="more"></a>
+<p>插件项目地址<br><a href="https://github.com/grzhan/hexo-tag-aplayer#upstream-issue" target="_blank" rel="noopener">hexo-tag-aplayer</a><br><a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="noopener">hexo-tag-dplayer</a></p>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-aplayer</span><br><span class="line">npm install hexo-tag-dplayer</span><br></pre></td></tr></table></figure>
 
-			<div id="aplayer1" class="aplayer" style="margin-bottom: 20px;"></div>
-			<script>
-				var options = {"narrow":false,"autoplay":false,"showlrc":1,"mode":"random","mutex":true,"theme":"#e6d0b2","preload":"metadata","listmaxheight":"513px","music":[{"title":"平凡之路","author":"朴树","url":"http://ou01t80jk.bkt.clouddn.com/%E5%B9%B3%E5%87%A1%E4%B9%8B%E8%B7%AF.mp3","pic":"http://p4.music.126.net/W_5XiCv3rGS1-J7EXpHSCQ==/18885211718782327.jpg?param=130y130","lrc":"[ti:平凡之路]\n[ar:朴树]\n[al:后会无期主题歌]\n[00:00.31]后会无期主题歌\n[00:02.41]朴树 - 平凡之路\n[00:03.76]作词：韩寒 朴树 \n[00:05.67]作曲：朴树 编曲：朴树\n[00:12.12]徘徊着的  在路上的  \n[00:17.47]你要走吗\n[00:23.30]易碎的  骄傲着  \n[00:28.85]那也曾是我的模样\n[00:34.65]沸腾着的  不安着的  \n[00:40.36]你要去哪\n[00:46.10]谜一样的  沉默着的  \n[00:51.85]故事你真的在听吗\n[00:56.35]我曾经跨过山和大海  \n[00:59.65]也穿过人山人海\n[01:02.80]我曾经拥有着一切     \n[01:05.10]转眼都飘散如烟\n[01:07.85]我曾经失落失望失掉所有方向\n[01:13.56]直到看见平凡才是唯一的答案\n[01:31.80]当你仍然  \n[01:33.20]还在幻想  \n[01:37.50]你的明天\n[01:43.10]她会好吗  还是更烂  \n[01:49.88]对我而言是另一天\n[01:53.43]我曾经毁了我的一切  \n[01:56.64]只想永远地离开\n[01:59.92]我曾经堕入无边黑暗   \n[02:02.24]想挣扎无法自拔\n[02:04.89]我曾经象你象他象那野草野花\n[02:10.64]绝望着 渴望着 \n[02:13.64]也哭也笑平凡着\n[03:03.48]向前走 就这么走   \n[03:06.33]就算你被给过什么\n[03:09.18]向前走 就这么走   \n[03:11.93]就算你被夺走什么                                        \n[03:14.88]向前走 就这么走   \n[03:17.68]就算你会错过什么\n[03:20.43]向前走 就这么走   \n[03:23.23]就算你会\n[03:25.88]我曾经跨过山和大海  \n[03:28.24]也穿过人山人海\n[03:30.54]我曾经拥有着一切     \n[03:33.79]转眼都飘散如烟\n[03:36.34]我曾经失落失望失掉所有方向\n[03:42.14]直到看见平凡才是唯一的答案\n[03:47.79]我曾经毁了我的一切  \n[03:50.94]只想永远地离开\n[03:53.49]我曾经堕入无边黑暗   \n[03:56.39]想挣扎无法自拔\n[03:59.14]我曾经象你象他象那野草野花\n[04:04.89]绝望着 渴望着 也哭也笑平凡着\n[04:10.74]我曾经跨过山和大海  \n[04:13.64]也穿过人山人海\n[04:16.24]我曾经问遍整个世界  \n[04:19.59]从来没得到答案\n[04:22.98]我不过象你象他象那野草野花\n[04:27.74]冥冥中这是我 唯一要走的路啊\n[04:34.75]时间无言  \n[04:36.25]如此这般\n[04:40.40]明天已在眼前\n[04:46.55]风吹过的  路依然远\n[04:51.65]你的故事讲到了哪\n"},{"title":"十年","author":"陈奕迅","url":"http://ou01t80jk.bkt.clouddn.com/%E5%8D%81%E5%B9%B4.mp3","pic":"http://p1.music.126.net/WJgLE2ImnLgqPPLQSlF7iQ==/114349209289440.jpg?param=130y130"},{"title":"匆匆那年","author":"王菲","url":"https://dn-linli580.qbox.me/%E5%8C%86%E5%8C%86%E9%82%A3%E5%B9%B4.m4a","pic":"http://img.1ting.com/images/special/363/s300_82db64700c34712674445e797ce3eb33.jpg"},{"title":"Young For You","author":"GALA","url":"http://ou01t80jk.bkt.clouddn.com/Young%C2%A0For%C2%A0You%20-%20GALA.mp3","pic":"http://p3.music.126.net/_g_52t_RLrYze2dNBkvHvg==/65970697682161.jpg?param=130y130"}]};
-				options.element = document.getElementById("aplayer1");
-				new APlayer(options);
-			</script>
+<h2 id="插入音乐"><a href="#插入音乐" class="headerlink" title="插入音乐"></a>插入音乐</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% aplayer title author url [picture_url, narrow, autoplay, width:xxx, lrc:xxx] %&#125;</span><br></pre></td></tr></table></figure>
 
-		
-<h2 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h2><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;%</div><div class="line">dplayer &quot;url=http://ou01ijyji.bkt.clouddn.com/fuckyou.mp4&quot;</div><div class="line">&quot;api=http://dplayer.daoapp.io&quot;</div><div class="line">&quot;pic=http://p1.music.126.net/8qHI7sEEk3eM2DLitQXFDQ==/765260092953631.jpg?param=130y130&quot;</div><div class="line">&quot;id=9E2E3368B56CDBB4&quot;</div><div class="line">&quot;loop=yes&quot;</div><div class="line">&quot;theme=#FADFA3&quot;</div><div class="line">&quot;autoplay=false&quot;</div><div class="line">&quot;token=tokendemo&quot;</div><div class="line"> %&#125;</div></pre></td></tr></table></figure>
-<div id="dplayer0" class="dplayer" style="margin-bottom: 20px;"></div><script>var dplayer0 = new DPlayer({"element":document.getElementById("dplayer0"),"autoplay":false,"theme":"#FADFA3","loop":true,"video":{"url":"http://ou01ijyji.bkt.clouddn.com/fuckyou.mp4","pic":"http://p1.music.126.net/8qHI7sEEk3eM2DLitQXFDQ==/765260092953631.jpg?param=130y130"},"danmaku":{"api":"http://dplayer.daoapp.io","id":"9E2E3368B56CDBB4","token":"tokendemo"}});</script>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title ：音乐标题</span><br><span class="line">author：音乐作者</span><br><span class="line">url：音乐文件网址</span><br><span class="line">picture_url：可选，音乐图片网址</span><br><span class="line">narrow：可选，窄款式</span><br><span class="line">autoplay：可选，自动播放音乐，不支持移动浏览器</span><br><span class="line">width:xxx：可选，前缀width:，播放器宽度（默认值：100％）</span><br><span class="line">lrc:xxx：可选，前缀lrc:，LRC文件url</span><br></pre></td></tr></table></figure>
+
+<h3 id="单个播放示例"><a href="#单个播放示例" class="headerlink" title="单个播放示例"></a>单个播放示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% aplayer &quot;Caffeine&quot; &quot;Jeff Williams&quot; &quot;caffeine.mp3&quot; &quot;picture.jpg&quot; &quot;lrc:caffeine.txt&quot; %&#125;</span><br></pre></td></tr></table></figure>
+
+
+        <div id="aplayer-TUpYNEdK" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-TUpYNEdK"),
+            narrow: false,
+            autoplay: false,
+            showlrc: 3,
+            music: {
+              title: "Paranoid",
+              author: "Black Sabbath",
+              url: "https://mooom.oss-cn-shenzhen.aliyuncs.com/sound/Paranoid.mp3",
+              pic: "http://p3.music.126.net/FYW8etVyFbfH8utWYk-KcA==/708085488295457.jpg?param=130y130",
+              lrc: "https://mooom.oss-cn-shenzhen.aliyuncs.com/sound/Paranoid.lrc"
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+
+
+<h3 id="列表播放示例"><a href="#列表播放示例" class="headerlink" title="列表播放示例"></a>列表播放示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;% aplayerlist %&#125;</span><br><span class="line">&#123;</span><br><span class="line">	&quot;narrow&quot;: false,						</span><br><span class="line">    &quot;autoplay&quot;: true,						</span><br><span class="line">    &quot;mode&quot;: &quot;random&quot;,					</span><br><span class="line">    &quot;showlrc&quot;: 1,							</span><br><span class="line">    &quot;mutex&quot;: true,						</span><br><span class="line">    &quot;theme&quot;: &quot;#e6d0b2&quot;,						</span><br><span class="line">	&quot;preload&quot;: &quot;metadata&quot;,				</span><br><span class="line">	&quot;listmaxheight&quot;: &quot;513px&quot;,</span><br><span class="line">    &quot;music&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;title&quot;: &quot;CoCo&quot;,</span><br><span class="line">            &quot;author&quot;: &quot;Jeff Williams&quot;,</span><br><span class="line">            &quot;url&quot;: &quot;caffeine.mp3&quot;,</span><br><span class="line">            &quot;pic&quot;: &quot;caffeine.jpeg&quot;,</span><br><span class="line">            &quot;lrc&quot;: &quot;caffeine.txt&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;title&quot;: &quot;アイロニ&quot;,</span><br><span class="line">            &quot;author&quot;: &quot;鹿乃&quot;,</span><br><span class="line">            &quot;url&quot;: &quot;irony.mp3&quot;,</span><br><span class="line">            &quot;pic&quot;: &quot;irony.jpg&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#123;% endaplayerlist %&#125;</span><br></pre></td></tr></table></figure>
+
+
+        <div id="aplayer-bUYIqJXj" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;"></div>
+			  <script>
+				  var options = {"narrow":false,"autoplay":false,"showlrc":1,"mode":"random","mutex":true,"theme":"#e6d0b2","preload":"metadata","listmaxheight":"513px","music":[{"title":"平凡之路","author":"朴树","url":"https://mooom.oss-cn-shenzhen.aliyuncs.com/sound/%E5%B9%B3%E5%87%A1%E4%B9%8B%E8%B7%AF.mp3","pic":"http://p4.music.126.net/W_5XiCv3rGS1-J7EXpHSCQ==/18885211718782327.jpg?param=130y130","lrc":"[ti:平凡之路]\n[ar:朴树]\n[al:后会无期主题歌]\n[00:00.31]后会无期主题歌\n[00:02.41]朴树 - 平凡之路\n[00:03.76]作词：韩寒 朴树 \n[00:05.67]作曲：朴树 编曲：朴树\n[00:12.12]徘徊着的  在路上的  \n[00:17.47]你要走吗\n[00:23.30]易碎的  骄傲着  \n[00:28.85]那也曾是我的模样\n[00:34.65]沸腾着的  不安着的  \n[00:40.36]你要去哪\n[00:46.10]谜一样的  沉默着的  \n[00:51.85]故事你真的在听吗\n[00:56.35]我曾经跨过山和大海  \n[00:59.65]也穿过人山人海\n[01:02.80]我曾经拥有着一切     \n[01:05.10]转眼都飘散如烟\n[01:07.85]我曾经失落失望失掉所有方向\n[01:13.56]直到看见平凡才是唯一的答案\n[01:31.80]当你仍然  \n[01:33.20]还在幻想  \n[01:37.50]你的明天\n[01:43.10]她会好吗  还是更烂  \n[01:49.88]对我而言是另一天\n[01:53.43]我曾经毁了我的一切  \n[01:56.64]只想永远地离开\n[01:59.92]我曾经堕入无边黑暗   \n[02:02.24]想挣扎无法自拔\n[02:04.89]我曾经象你象他象那野草野花\n[02:10.64]绝望着 渴望着 \n[02:13.64]也哭也笑平凡着\n[03:03.48]向前走 就这么走   \n[03:06.33]就算你被给过什么\n[03:09.18]向前走 就这么走   \n[03:11.93]就算你被夺走什么                                        \n[03:14.88]向前走 就这么走   \n[03:17.68]就算你会错过什么\n[03:20.43]向前走 就这么走   \n[03:23.23]就算你会\n[03:25.88]我曾经跨过山和大海  \n[03:28.24]也穿过人山人海\n[03:30.54]我曾经拥有着一切     \n[03:33.79]转眼都飘散如烟\n[03:36.34]我曾经失落失望失掉所有方向\n[03:42.14]直到看见平凡才是唯一的答案\n[03:47.79]我曾经毁了我的一切  \n[03:50.94]只想永远地离开\n[03:53.49]我曾经堕入无边黑暗   \n[03:56.39]想挣扎无法自拔\n[03:59.14]我曾经象你象他象那野草野花\n[04:04.89]绝望着 渴望着 也哭也笑平凡着\n[04:10.74]我曾经跨过山和大海  \n[04:13.64]也穿过人山人海\n[04:16.24]我曾经问遍整个世界  \n[04:19.59]从来没得到答案\n[04:22.98]我不过象你象他象那野草野花\n[04:27.74]冥冥中这是我 唯一要走的路啊\n[04:34.75]时间无言  \n[04:36.25]如此这般\n[04:40.40]明天已在眼前\n[04:46.55]风吹过的  路依然远\n[04:51.65]你的故事讲到了哪\n"},{"title":"十年","author":"陈奕迅","url":"https://mooom.oss-cn-shenzhen.aliyuncs.com/sound/%E5%8D%81%E5%B9%B4.mp3","pic":"http://p1.music.126.net/WJgLE2ImnLgqPPLQSlF7iQ==/114349209289440.jpg?param=130y130"}]};
+				  options.element = document.getElementById("aplayer-bUYIqJXj");
+				  var ap = new APlayer(options);
+			    window.aplayers || (window.aplayers = []);
+				  window.aplayers.push(ap);
+			  </script>
+
+<h2 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h2><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;%</span><br><span class="line">dplayer &quot;url=http://ou01ijyji.bkt.clouddn.com/fuckyou.mp4&quot;</span><br><span class="line">&quot;api=http://dplayer.daoapp.io&quot;</span><br><span class="line">&quot;pic=http://p1.music.126.net/8qHI7sEEk3eM2DLitQXFDQ==/765260092953631.jpg?param=130y130&quot;</span><br><span class="line">&quot;id=9E2E3368B56CDBB4&quot;</span><br><span class="line">&quot;loop=yes&quot;</span><br><span class="line">&quot;theme=#FADFA3&quot;</span><br><span class="line">&quot;autoplay=false&quot;</span><br><span class="line">&quot;token=tokendemo&quot;</span><br><span class="line"> %&#125;</span><br></pre></td></tr></table></figure>
+
+<div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"https://mooom.oss-cn-shenzhen.aliyuncs.com/sound/Lily Allen _ F You.mp4","pic":"http://p1.music.126.net/8qHI7sEEk3eM2DLitQXFDQ==/765260092953631.jpg?param=130y130"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
       
     </div>
@@ -370,7 +381,7 @@
         <p><span>本文标题:</span><a href="/2017/08/01/music/">hexo插入音频</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-08-01, 15:42:35</p>
-        <p><span>最后更新:</span>2018-01-30, 13:59:59</p>
+        <p><span>最后更新:</span>2019-09-04, 17:49:53</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/01/music/" title="hexo插入音频">http://blog.mooom.top/2017/08/01/music/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/08/01/music/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -476,7 +487,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -490,10 +501,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -601,7 +612,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 

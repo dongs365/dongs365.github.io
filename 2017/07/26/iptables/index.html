@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -22,12 +22,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/07/26/iptables/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。">
-<meta property="og:updated_time" content="2017-07-26T06:54:52.499Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iptables">
 <meta name="twitter:description" content="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,7 +100,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -117,6 +118,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -311,19 +319,31 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h4 id="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"><a href="#iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。" class="headerlink" title="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"></a>iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。</h4><a id="more"></a>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables(选项)(参数)</div></pre></td></tr></table></figure>
-<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-t&lt;表&gt;：指定要操纵的表；</div><div class="line">-A：向规则链中添加条目；</div><div class="line">-D：从规则链中删除条目；</div><div class="line">-i：向规则链中插入条目；</div><div class="line">-R：替换规则链中的条目；</div><div class="line">-L：显示规则链中已有的条目；</div><div class="line">-F：清楚规则链中已有的条目；</div><div class="line">-Z：清空规则链中的数据包计算器和字节计数器；</div><div class="line">-N：创建新的用户自定义规则链；</div><div class="line">-P：定义规则链中的默认目标；</div><div class="line">-h：显示帮助信息；</div><div class="line">-p：指定要匹配的数据包协议类型；</div><div class="line">-s：指定要匹配的数据包源ip地址；</div><div class="line">-j&lt;目标&gt;：指定要跳转的目标；</div><div class="line">-i&lt;网络接口&gt;：指定数据包进入本机的网络接口；</div><div class="line">-o&lt;网络接口&gt;：指定数据包要离开本机所使用的网络接口。</div></pre></td></tr></table></figure>
-<h1 id="iptables命令选项输入顺序："><a href="#iptables命令选项输入顺序：" class="headerlink" title="iptables命令选项输入顺序："></a>iptables命令选项输入顺序：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t 表名 &lt;-A/I/D/R&gt; 规则链名 [规则号] &lt;-i/o 网卡名&gt; -p 协议名 &lt;-s 源IP/源子网&gt; --sport 源端口 &lt;-d 目标IP/目标子网&gt; --dport 目标端口 -j 动作</div></pre></td></tr></table></figure>
-<h1 id="表名包括："><a href="#表名包括：" class="headerlink" title="表名包括："></a>表名包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">raw：高级功能，如：网址过滤。</div><div class="line">mangle：数据包修改（QOS），用于实现服务质量。</div><div class="line">net：地址转换，用于网关路由器。</div><div class="line">filter：包过滤，用于防火墙规则。</div></pre></td></tr></table></figure>
-<h1 id="规则链名包括："><a href="#规则链名包括：" class="headerlink" title="规则链名包括："></a>规则链名包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">INPUT链：处理输入数据包。</div><div class="line">OUTPUT链：处理输出数据包。</div><div class="line">PORWARD链：处理转发数据包。</div><div class="line">PREROUTING链：用于目标地址转换（DNAT）。</div><div class="line">POSTOUTING链：用于源地址转换（SNAT）。</div></pre></td></tr></table></figure>
-<h1 id="动作包括："><a href="#动作包括：" class="headerlink" title="动作包括："></a>动作包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">accept：接收数据包。</div><div class="line">DROP：丢弃数据包。</div><div class="line">REDIRECT：重定向、映射、透明代理。</div><div class="line">SNAT：源地址转换。</div><div class="line">DNAT：目标地址转换。</div><div class="line">MASQUERADE：IP伪装（NAT），用于ADSL。</div><div class="line">LOG：日志记录。</div></pre></td></tr></table></figure>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h1 id="清除已有iptables规则"><a href="#清除已有iptables规则" class="headerlink" title="清除已有iptables规则"></a>清除已有iptables规则</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">iptables -F</div><div class="line">iptables -X</div><div class="line">iptables -Z</div></pre></td></tr></table></figure>
-<h1 id="开放指定的端口"><a href="#开放指定的端口" class="headerlink" title="开放指定的端口"></a>开放指定的端口</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT #允许本地回环接口(即运行本机访问本机)</div><div class="line">iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT #允许已建立的或相关连的通行</div><div class="line">iptables -A OUTPUT -j ACCEPT #允许所有本机向外的访问</div><div class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT #允许访问22端口</div><div class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT #允许访问80端口</div><div class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT #允许ftp服务的21端口</div><div class="line">iptables -A INPUT -p tcp --dport 20 -j ACCEPT #允许FTP服务的20端口</div><div class="line">iptables -A INPUT -j reject #禁止其他未允许的规则访问</div><div class="line">iptables -A FORWARD -j REJECT #禁止其他未允许的规则访问</div></pre></td></tr></table></figure>
-<h1 id="屏蔽IP"><a href="#屏蔽IP" class="headerlink" title="屏蔽IP"></a>屏蔽IP</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -s 123.45.6.7 -j DROP #屏蔽单个IP的命令</div><div class="line">iptables -I INPUT -s 123.0.0.0/8 -j DROP #封整个段即从123.0.0.1到123.255.255.254的命令</div><div class="line">iptables -I INPUT -s 124.45.0.0/16 -j DROP #封IP段即从123.45.0.1到123.45.255.254的命令</div><div class="line">iptables -I INPUT -s 123.45.6.0/24 -j DROP #封IP段即从123.45.6.1到123.45.6.254的命令是</div></pre></td></tr></table></figure>
-<h1 id="查看已添加的iptables规则"><a href="#查看已添加的iptables规则" class="headerlink" title="查看已添加的iptables规则"></a>查看已添加的iptables规则</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">iptables -L -n -v Chain INPUT (policy DROP 48106 packets, 2690K bytes)</div><div class="line">pkts bytes target prot opt in out source destination</div><div class="line">5075 589K ACCEPT all -- lo * 0.0.0.0/0 0.0.0.0/0</div><div class="line">191K 90M ACCEPT tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:22</div><div class="line">1499K 133M ACCEPT tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:80</div><div class="line">4364K 6351M ACCEPT all -- * * 0.0.0.0/0 0.0.0.0/0 state RELATED,ESTABLISHED</div><div class="line">6256 327K ACCEPT icmp -- * * 0.0.0.0/0 0.0.0.0/0</div><div class="line"></div><div class="line">Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)</div><div class="line">pkts bytes target prot opt in out source destination</div><div class="line"></div><div class="line">Chain OUTPUT (policy ACCEPT 3382K packets, 1819M bytes)</div><div class="line">pkts bytes target prot opt in out source destination</div><div class="line">5075 589K ACCEPT all -- * lo 0.0.0.0/0 0.0.0.0/0</div></pre></td></tr></table></figure>
-<h1 id="删除已添加的iptables规则"><a href="#删除已添加的iptables规则" class="headerlink" title="删除已添加的iptables规则"></a>删除已添加的iptables规则</h1><h1 id="将所有iptables以序号标记显示，执行："><a href="#将所有iptables以序号标记显示，执行：" class="headerlink" title="将所有iptables以序号标记显示，执行："></a>将所有iptables以序号标记显示，执行：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -L -n --line-numbers</div></pre></td></tr></table></figure>
-<h1 id="比如要删除INPUT里序号为8的规则，执行："><a href="#比如要删除INPUT里序号为8的规则，执行：" class="headerlink" title="比如要删除INPUT里序号为8的规则，执行："></a>比如要删除INPUT里序号为8的规则，执行：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -D INPUT 8</div></pre></td></tr></table></figure>
+        <h4 id="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"><a href="#iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。" class="headerlink" title="iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。"></a>iptables命令是Linux上常用的防火墙软件，是netfilter项目的一部分。可以直接配置，也可以通过许多前端和图形界面配置。</h4><a id="more"></a>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables(选项)(参数)</span><br></pre></td></tr></table></figure>
+
+<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-t&lt;表&gt;：指定要操纵的表；</span><br><span class="line">-A：向规则链中添加条目；</span><br><span class="line">-D：从规则链中删除条目；</span><br><span class="line">-i：向规则链中插入条目；</span><br><span class="line">-R：替换规则链中的条目；</span><br><span class="line">-L：显示规则链中已有的条目；</span><br><span class="line">-F：清楚规则链中已有的条目；</span><br><span class="line">-Z：清空规则链中的数据包计算器和字节计数器；</span><br><span class="line">-N：创建新的用户自定义规则链；</span><br><span class="line">-P：定义规则链中的默认目标；</span><br><span class="line">-h：显示帮助信息；</span><br><span class="line">-p：指定要匹配的数据包协议类型；</span><br><span class="line">-s：指定要匹配的数据包源ip地址；</span><br><span class="line">-j&lt;目标&gt;：指定要跳转的目标；</span><br><span class="line">-i&lt;网络接口&gt;：指定数据包进入本机的网络接口；</span><br><span class="line">-o&lt;网络接口&gt;：指定数据包要离开本机所使用的网络接口。</span><br></pre></td></tr></table></figure>
+
+<h1 id="iptables命令选项输入顺序："><a href="#iptables命令选项输入顺序：" class="headerlink" title="iptables命令选项输入顺序："></a>iptables命令选项输入顺序：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t 表名 &lt;-A/I/D/R&gt; 规则链名 [规则号] &lt;-i/o 网卡名&gt; -p 协议名 &lt;-s 源IP/源子网&gt; --sport 源端口 &lt;-d 目标IP/目标子网&gt; --dport 目标端口 -j 动作</span><br></pre></td></tr></table></figure>
+
+<h1 id="表名包括："><a href="#表名包括：" class="headerlink" title="表名包括："></a>表名包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">raw：高级功能，如：网址过滤。</span><br><span class="line">mangle：数据包修改（QOS），用于实现服务质量。</span><br><span class="line">net：地址转换，用于网关路由器。</span><br><span class="line">filter：包过滤，用于防火墙规则。</span><br></pre></td></tr></table></figure>
+
+<h1 id="规则链名包括："><a href="#规则链名包括：" class="headerlink" title="规则链名包括："></a>规则链名包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INPUT链：处理输入数据包。</span><br><span class="line">OUTPUT链：处理输出数据包。</span><br><span class="line">PORWARD链：处理转发数据包。</span><br><span class="line">PREROUTING链：用于目标地址转换（DNAT）。</span><br><span class="line">POSTOUTING链：用于源地址转换（SNAT）。</span><br></pre></td></tr></table></figure>
+
+<h1 id="动作包括："><a href="#动作包括：" class="headerlink" title="动作包括："></a>动作包括：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">accept：接收数据包。</span><br><span class="line">DROP：丢弃数据包。</span><br><span class="line">REDIRECT：重定向、映射、透明代理。</span><br><span class="line">SNAT：源地址转换。</span><br><span class="line">DNAT：目标地址转换。</span><br><span class="line">MASQUERADE：IP伪装（NAT），用于ADSL。</span><br><span class="line">LOG：日志记录。</span><br></pre></td></tr></table></figure>
+
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h1 id="清除已有iptables规则"><a href="#清除已有iptables规则" class="headerlink" title="清除已有iptables规则"></a>清除已有iptables规则</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br><span class="line">iptables -X</span><br><span class="line">iptables -Z</span><br></pre></td></tr></table></figure>
+
+<h1 id="开放指定的端口"><a href="#开放指定的端口" class="headerlink" title="开放指定的端口"></a>开放指定的端口</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT #允许本地回环接口(即运行本机访问本机)</span><br><span class="line">iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT #允许已建立的或相关连的通行</span><br><span class="line">iptables -A OUTPUT -j ACCEPT #允许所有本机向外的访问</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT #允许访问22端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT #允许访问80端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT #允许ftp服务的21端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 20 -j ACCEPT #允许FTP服务的20端口</span><br><span class="line">iptables -A INPUT -j reject #禁止其他未允许的规则访问</span><br><span class="line">iptables -A FORWARD -j REJECT #禁止其他未允许的规则访问</span><br></pre></td></tr></table></figure>
+
+<h1 id="屏蔽IP"><a href="#屏蔽IP" class="headerlink" title="屏蔽IP"></a>屏蔽IP</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -s 123.45.6.7 -j DROP #屏蔽单个IP的命令</span><br><span class="line">iptables -I INPUT -s 123.0.0.0/8 -j DROP #封整个段即从123.0.0.1到123.255.255.254的命令</span><br><span class="line">iptables -I INPUT -s 124.45.0.0/16 -j DROP #封IP段即从123.45.0.1到123.45.255.254的命令</span><br><span class="line">iptables -I INPUT -s 123.45.6.0/24 -j DROP #封IP段即从123.45.6.1到123.45.6.254的命令是</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看已添加的iptables规则"><a href="#查看已添加的iptables规则" class="headerlink" title="查看已添加的iptables规则"></a>查看已添加的iptables规则</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -n -v Chain INPUT (policy DROP 48106 packets, 2690K bytes)</span><br><span class="line">pkts bytes target prot opt in out source destination</span><br><span class="line">5075 589K ACCEPT all -- lo * 0.0.0.0/0 0.0.0.0/0</span><br><span class="line">191K 90M ACCEPT tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:22</span><br><span class="line">1499K 133M ACCEPT tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:80</span><br><span class="line">4364K 6351M ACCEPT all -- * * 0.0.0.0/0 0.0.0.0/0 state RELATED,ESTABLISHED</span><br><span class="line">6256 327K ACCEPT icmp -- * * 0.0.0.0/0 0.0.0.0/0</span><br><span class="line"></span><br><span class="line">Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)</span><br><span class="line">pkts bytes target prot opt in out source destination</span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT 3382K packets, 1819M bytes)</span><br><span class="line">pkts bytes target prot opt in out source destination</span><br><span class="line">5075 589K ACCEPT all -- * lo 0.0.0.0/0 0.0.0.0/0</span><br></pre></td></tr></table></figure>
+
+<h1 id="删除已添加的iptables规则"><a href="#删除已添加的iptables规则" class="headerlink" title="删除已添加的iptables规则"></a>删除已添加的iptables规则</h1><h1 id="将所有iptables以序号标记显示，执行："><a href="#将所有iptables以序号标记显示，执行：" class="headerlink" title="将所有iptables以序号标记显示，执行："></a>将所有iptables以序号标记显示，执行：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -n --line-numbers</span><br></pre></td></tr></table></figure>
+
+<h1 id="比如要删除INPUT里序号为8的规则，执行："><a href="#比如要删除INPUT里序号为8的规则，执行：" class="headerlink" title="比如要删除INPUT里序号为8的规则，执行："></a>比如要删除INPUT里序号为8的规则，执行：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -D INPUT 8</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -335,7 +355,7 @@
         <p><span>本文标题:</span><a href="/2017/07/26/iptables/">iptables</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-07-26, 14:29:15</p>
-        <p><span>最后更新:</span>2017-07-26, 14:54:52</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/26/iptables/" title="iptables">http://blog.mooom.top/2017/07/26/iptables/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/07/26/iptables/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -441,7 +461,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -455,10 +475,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -566,7 +586,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 

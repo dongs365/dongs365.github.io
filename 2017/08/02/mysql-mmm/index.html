@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -22,12 +22,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/08/02/mysql-mmm/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="mysql-mmm多主复制管理器 是一组灵活的脚本（在任何时间只有一个节点可写）来执行监视/故障转移和MySQL主-主复制配置管理工具。该工具集还能够通过任意数量的从站读取平衡标准主/从配置，因此您可以使用它来移动一组服务器上的虚拟IP地址，具体取决于它们是否在复制中。">
-<meta property="og:updated_time" content="2017-08-02T11:47:19.144Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-mmm 部署指南">
 <meta name="twitter:description" content="mysql-mmm多主复制管理器 是一组灵活的脚本（在任何时间只有一个节点可写）来执行监视/故障转移和MySQL主-主复制配置管理工具。该工具集还能够通过任意数量的从站读取平衡标准主/从配置，因此您可以使用它来移动一组服务器上的虚拟IP地址，具体取决于它们是否在复制中。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,7 +100,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -117,6 +118,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -311,96 +319,72 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>mysql-mmm多主复制管理器 是一组灵活的脚本（在任何时间只有一个节点可写）来执行监视/故障转移和MySQL主-主复制配置管理工具。<br>该工具集还能够通过任意数量的从站读取平衡标准主/从配置，因此您可以使用它来移动一组服务器上的虚拟IP地址，具体取决于它们是否在复制中。<br><a id="more"></a></p>
+        <p>mysql-mmm多主复制管理器 是一组灵活的脚本（在任何时间只有一个节点可写）来执行监视/故障转移和MySQL主-主复制配置管理工具。<br>该工具集还能够通过任意数量的从站读取平衡标准主/从配置，因此您可以使用它来移动一组服务器上的虚拟IP地址，具体取决于它们是否在复制中。</p>
+<a id="more"></a>
 <h2 id="部署环境准备"><a href="#部署环境准备" class="headerlink" title="部署环境准备"></a>部署环境准备</h2><p>最基本的安装必须至少包含2个数据库服务器和一个监控服务器，这边的环境是5台主机<br>系统：ubuntu 14.04<br>MMM软件：2.2.1</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">主机类型</th>
-<th style="text-align:left">ip地址</th>
-<th style="text-align:left">主机名称</th>
-<th style="text-align:left">服务 id</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">monitoring host</td>
-<td style="text-align:left">192.168.0.10</td>
-<td style="text-align:left">mon</td>
-<td style="text-align:left">-</td>
-<td>监控</td>
-</tr>
-<tr>
-<td style="text-align:left">master 1</td>
-<td style="text-align:left">192.168.0.11</td>
-<td style="text-align:left">db1</td>
-<td style="text-align:left">1</td>
-<td>主</td>
-</tr>
-<tr>
-<td style="text-align:left">master 2</td>
-<td style="text-align:left">192.168.0.12</td>
-<td style="text-align:left">db2</td>
-<td style="text-align:left">2</td>
-<td>主</td>
-</tr>
-<tr>
-<td style="text-align:left">slave  1</td>
-<td style="text-align:left">192.168.0.13</td>
-<td style="text-align:left">db3</td>
-<td style="text-align:left">3</td>
-<td>从</td>
-</tr>
-<tr>
-<td style="text-align:left">slave  2</td>
-<td style="text-align:left">192.168.0.14</td>
-<td style="text-align:left">db4</td>
-<td style="text-align:left">4</td>
-<td>从</td>
-</tr>
-</tbody>
-</table>
+<p>|主机类型|ip地址|主机名称|服务 id | 备注<br>|:——-|:——|:——-|:——-|<br>|monitoring host|192.168.0.10|mon|-|监控<br>|master 1|192.168.0.11|      db1|1|主<br>|master 2|192.168.0.12|      db2|2|主<br>|slave  1|192.168.0.13|      db3|3|从<br>|slave  2|192.168.0.14|      db4|4|从</p>
 <p>使用以下虚拟 IP。他们将通过MMM分布在主机上。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">ip地址</th>
-<th style="text-align:left">角色</th>
-<th style="text-align:left">描述</th>
+<th align="left">ip地址</th>
+<th align="left">角色</th>
+<th align="left">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">192.168.0.100</td>
-<td style="text-align:left">读写</td>
-<td style="text-align:left">连接到此IP以进行写入查询</td>
+<tbody><tr>
+<td align="left">192.168.0.100</td>
+<td align="left">读写</td>
+<td align="left">连接到此IP以进行写入查询</td>
 </tr>
 <tr>
-<td style="text-align:left">192.168.0.100</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">连接到这个IP进行读取查询</td>
+<td align="left">192.168.0.100</td>
+<td align="left">读</td>
+<td align="left">连接到这个IP进行读取查询</td>
 </tr>
 <tr>
-<td style="text-align:left">192.168.0.100</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">连接到这个IP进行读取查询</td>
+<td align="left">192.168.0.100</td>
+<td align="left">读</td>
+<td align="left">连接到这个IP进行读取查询</td>
 </tr>
 <tr>
-<td style="text-align:left">192.168.0.100</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">连接到这个IP进行读取查询</td>
+<td align="left">192.168.0.100</td>
+<td align="left">读</td>
+<td align="left">连接到这个IP进行读取查询</td>
 </tr>
 <tr>
-<td style="text-align:left">192.168.0.100</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">连接到这个IP进行读取查询</td>
+<td align="left">192.168.0.100</td>
+<td align="left">读</td>
+<td align="left">连接到这个IP进行读取查询</td>
 </tr>
-</tbody>
-</table>
-<h2 id="Mysql-数据库配置"><a href="#Mysql-数据库配置" class="headerlink" title="Mysql 数据库配置"></a>Mysql 数据库配置</h2><p>db1 db2 双主相互同步     db3 db4 做db1的从库</p>
-<h3 id="设置主从同步"><a href="#设置主从同步" class="headerlink" title="设置主从同步"></a>设置主从同步</h3><h4 id="锁表禁止写入"><a href="#锁表禁止写入" class="headerlink" title="锁表禁止写入"></a>锁表禁止写入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; FLUSH TABLES WITH READ LOCK;</div></pre></td></tr></table></figure>
-<h4 id="显示db1的MASTER地址"><a href="#显示db1的MASTER地址" class="headerlink" title="显示db1的MASTER地址"></a>显示db1的MASTER地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW MASTER STATUS;</div></pre></td></tr></table></figure>
+<tr>
+<td align="left">## Mysql 数据库配置</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">db1 db2 双主相互同步     db3 db4 做db1的从库</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">### 设置主从同步</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">#### 锁表禁止写入</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; FLUSH TABLES WITH READ LOCK;</span><br></pre></td></tr></table></figure></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h4 id="显示db1的MASTER地址"><a href="#显示db1的MASTER地址" class="headerlink" title="显示db1的MASTER地址"></a>显示db1的MASTER地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW MASTER STATUS;</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -410,8 +394,7 @@
 <th>Binlog_Ignore_DB</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>mysql-bin.000001</td>
 <td>107</td>
 <td></td>
@@ -419,19 +402,34 @@
 </tr>
 <tr>
 <td>1 row in set (0.00 sec)</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-</tbody>
-</table>
-<h4 id="备份所有数据库-新的终端打开"><a href="#备份所有数据库-新的终端打开" class="headerlink" title="备份所有数据库(新的终端打开)"></a>备份所有数据库(新的终端打开)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p --all-databases &gt; /tmp/database-backup.sql</div></pre></td></tr></table></figure>
-<h4 id="对数据库解除锁定"><a href="#对数据库解除锁定" class="headerlink" title="对数据库解除锁定"></a>对数据库解除锁定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UNLOCK TABLES;</div></pre></td></tr></table></figure>
-<h4 id="数据库同步到其他"><a href="#数据库同步到其他" class="headerlink" title="数据库同步到其他"></a>数据库同步到其他</h4><p>复制刚才的数据库备份到db2, db3 and db4：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db1$ scp /tmp/database-backup.sql @192.168.0.12:/tmp</div><div class="line">db1$ scp /tmp/database-backup.sql @192.168.0.13:/tmp</div><div class="line">db1$ scp /tmp/database-backup.sql @192.168.0.14:/tmp</div></pre></td></tr></table></figure></p>
-<p>然后将备份导入到db2, db3 and db4：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db2$ mysql -u root -p &lt; /tmp/database-backup.sql</div><div class="line">db3$ mysql -u root -p &lt; /tmp/database-backup.sql</div><div class="line">db4$ mysql -u root -p &lt; /tmp/database-backup.sql</div></pre></td></tr></table></figure></p>
-<p>然后刷新db2, db3 and db4的权限，我们更改了user表，所以mysql要重新读取这个表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(db2) mysql&gt; FLUSH PRIVILEGES;</div><div class="line">(db3) mysql&gt; FLUSH PRIVILEGES;</div><div class="line">(db4) mysql&gt; FLUSH PRIVILEGES;</div></pre></td></tr></table></figure></p>
-<h4 id="设置同步"><a href="#设置同步" class="headerlink" title="设置同步"></a>设置同步</h4><p>通过下面的命令设置在db2, db3和db4上的复制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(db2) mysql&gt; CHANGE MASTER TO master_host=&apos;192.168.0.11&apos;, master_port=3306, master_user=&apos;replication&apos;,</div><div class="line">              master_password=&apos;replication_password&apos;, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=107;</div><div class="line">(db3) mysql&gt; CHANGE MASTER TO master_host=&apos;192.168.0.11&apos;, master_port=3306, master_user=&apos;replication&apos;,</div><div class="line">              master_password=&apos;replication_password&apos;, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=107;</div><div class="line">(db4) mysql&gt; CHANGE MASTER TO master_host=&apos;192.168.0.11&apos;, master_port=3306, master_user=&apos;replication&apos;,</div><div class="line">              master_password=&apos;replication_password&apos;, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=107;</div></pre></td></tr></table></figure></p>
-<h4 id="启动从库slave同步"><a href="#启动从库slave同步" class="headerlink" title="启动从库slave同步"></a>启动从库slave同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(db2) mysql&gt; START SLAVE;</div><div class="line">(db3) mysql&gt; START SLAVE;</div><div class="line">(db4) mysql&gt; START SLAVE;</div></pre></td></tr></table></figure>
-<h4 id="检查同步情况"><a href="#检查同步情况" class="headerlink" title="检查同步情况"></a>检查同步情况</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">(db2) mysql&gt; SHOW SLAVE STATUS\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">                Slave_IO_State: Waiting for master to send event</div><div class="line">                Master_Host: 192.168.0.11</div><div class="line">                Master_User: replication</div><div class="line">                Master_Port: 3306</div><div class="line">                Connect_Retry: 60</div><div class="line">…</div><div class="line">(db3) mysql&gt; SHOW SLAVE STATUS\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">                Slave_IO_State: Waiting for master to send event</div><div class="line">                Master_Host: 192.168.0.11</div><div class="line">                Master_User: replication</div><div class="line">                Master_Port: 3306</div><div class="line">                Connect_Retry: 60</div><div class="line">…</div><div class="line">(db4) mysql&gt; SHOW SLAVE STATUS\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">                Slave_IO_State: Waiting for master to send event</div><div class="line">                Master_Host: 192.168.0.11</div><div class="line">                Master_User: replication</div><div class="line">                Master_Port: 3306</div><div class="line">                Connect_Retry: 60</div></pre></td></tr></table></figure>
+</tbody></table>
+<h4 id="备份所有数据库-新的终端打开"><a href="#备份所有数据库-新的终端打开" class="headerlink" title="备份所有数据库(新的终端打开)"></a>备份所有数据库(新的终端打开)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u root -p --all-databases &gt; /tmp/database-backup.sql</span><br></pre></td></tr></table></figure>
+
+<h4 id="对数据库解除锁定"><a href="#对数据库解除锁定" class="headerlink" title="对数据库解除锁定"></a>对数据库解除锁定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据库同步到其他"><a href="#数据库同步到其他" class="headerlink" title="数据库同步到其他"></a>数据库同步到其他</h4><p>复制刚才的数据库备份到db2, db3 and db4：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db1$ scp /tmp/database-backup.sql @192.168.0.12:/tmp</span><br><span class="line">db1$ scp /tmp/database-backup.sql @192.168.0.13:/tmp</span><br><span class="line">db1$ scp /tmp/database-backup.sql @192.168.0.14:/tmp</span><br></pre></td></tr></table></figure>
+
+<p>然后将备份导入到db2, db3 and db4：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db2$ mysql -u root -p &lt; /tmp/database-backup.sql</span><br><span class="line">db3$ mysql -u root -p &lt; /tmp/database-backup.sql</span><br><span class="line">db4$ mysql -u root -p &lt; /tmp/database-backup.sql</span><br></pre></td></tr></table></figure>
+
+<p>然后刷新db2, db3 and db4的权限，我们更改了user表，所以mysql要重新读取这个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(db2) mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">(db3) mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">(db4) mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置同步"><a href="#设置同步" class="headerlink" title="设置同步"></a>设置同步</h4><p>通过下面的命令设置在db2, db3和db4上的复制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(db2) mysql&gt; CHANGE MASTER TO master_host=&apos;192.168.0.11&apos;, master_port=3306, master_user=&apos;replication&apos;,</span><br><span class="line">              master_password=&apos;replication_password&apos;, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=107;</span><br><span class="line">(db3) mysql&gt; CHANGE MASTER TO master_host=&apos;192.168.0.11&apos;, master_port=3306, master_user=&apos;replication&apos;,</span><br><span class="line">              master_password=&apos;replication_password&apos;, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=107;</span><br><span class="line">(db4) mysql&gt; CHANGE MASTER TO master_host=&apos;192.168.0.11&apos;, master_port=3306, master_user=&apos;replication&apos;,</span><br><span class="line">              master_password=&apos;replication_password&apos;, master_log_file=&apos;mysql-bin.000001&apos;, master_log_pos=107;</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动从库slave同步"><a href="#启动从库slave同步" class="headerlink" title="启动从库slave同步"></a>启动从库slave同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(db2) mysql&gt; START SLAVE;</span><br><span class="line">(db3) mysql&gt; START SLAVE;</span><br><span class="line">(db4) mysql&gt; START SLAVE;</span><br></pre></td></tr></table></figure>
+
+<h4 id="检查同步情况"><a href="#检查同步情况" class="headerlink" title="检查同步情况"></a>检查同步情况</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(db2) mysql&gt; SHOW SLAVE STATUS\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">                Slave_IO_State: Waiting for master to send event</span><br><span class="line">                Master_Host: 192.168.0.11</span><br><span class="line">                Master_User: replication</span><br><span class="line">                Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br><span class="line">…</span><br><span class="line">(db3) mysql&gt; SHOW SLAVE STATUS\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">                Slave_IO_State: Waiting for master to send event</span><br><span class="line">                Master_Host: 192.168.0.11</span><br><span class="line">                Master_User: replication</span><br><span class="line">                Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br><span class="line">…</span><br><span class="line">(db4) mysql&gt; SHOW SLAVE STATUS\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">                Slave_IO_State: Waiting for master to send event</span><br><span class="line">                Master_Host: 192.168.0.11</span><br><span class="line">                Master_User: replication</span><br><span class="line">                Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br></pre></td></tr></table></figure>
+
 <h3 id="设置主主同步"><a href="#设置主主同步" class="headerlink" title="设置主主同步"></a>设置主主同步</h3><p>db1到db2的同步</p>
-<h4 id="查询db2的MASTER状态"><a href="#查询db2的MASTER状态" class="headerlink" title="查询db2的MASTER状态"></a>查询db2的MASTER状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW MASTER STATUS;</div></pre></td></tr></table></figure>
+<h4 id="查询db2的MASTER状态"><a href="#查询db2的MASTER状态" class="headerlink" title="查询db2的MASTER状态"></a>查询db2的MASTER状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW MASTER STATUS;</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -441,8 +439,7 @@
 <th>Binlog_Ignore_DB</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>mysql-bin.000001</td>
 <td>107</td>
 <td></td>
@@ -450,61 +447,103 @@
 </tr>
 <tr>
 <td>1 row in set (0.00 sec)</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-</tbody>
-</table>
-<h4 id="配置db1到db2的同步"><a href="#配置db1到db2的同步" class="headerlink" title="配置db1到db2的同步"></a>配置db1到db2的同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(db1) mysql&gt; CHANGE MASTER TO master_host = &apos;192.168.0.12&apos;,master_port=3306,</div><div class="line">master_user=&apos;replication&apos;,master_password=&apos;replication_password&apos;,</div><div class="line">master_log_file=&apos;mysql-bin.000001&apos;,master_log_pos=107;</div></pre></td></tr></table></figure>
-<h4 id="启动db1的slave进程"><a href="#启动db1的slave进程" class="headerlink" title="启动db1的slave进程"></a>启动db1的slave进程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(db1) mysql&gt; START SLAVE;</div></pre></td></tr></table></figure>
-<h4 id="确认db1的同步状态"><a href="#确认db1的同步状态" class="headerlink" title="确认db1的同步状态"></a>确认db1的同步状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(db1) mysql&gt; SHOW SLAVE STATUS\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">                Slave_IO_State: Waiting for master to send event</div><div class="line">                Master_Host: 192.168.0.12</div><div class="line">                Master_User:</div><div class="line">                Master_Port: 3306</div><div class="line">                Connect_Retry: 60</div></pre></td></tr></table></figure>
+</tbody></table>
+<h4 id="配置db1到db2的同步"><a href="#配置db1到db2的同步" class="headerlink" title="配置db1到db2的同步"></a>配置db1到db2的同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(db1) mysql&gt; CHANGE MASTER TO master_host = &apos;192.168.0.12&apos;,master_port=3306,</span><br><span class="line">master_user=&apos;replication&apos;,master_password=&apos;replication_password&apos;,</span><br><span class="line">master_log_file=&apos;mysql-bin.000001&apos;,master_log_pos=107;</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动db1的slave进程"><a href="#启动db1的slave进程" class="headerlink" title="启动db1的slave进程"></a>启动db1的slave进程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(db1) mysql&gt; START SLAVE;</span><br></pre></td></tr></table></figure>
+
+<h4 id="确认db1的同步状态"><a href="#确认db1的同步状态" class="headerlink" title="确认db1的同步状态"></a>确认db1的同步状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(db1) mysql&gt; SHOW SLAVE STATUS\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">                Slave_IO_State: Waiting for master to send event</span><br><span class="line">                Master_Host: 192.168.0.12</span><br><span class="line">                Master_User:</span><br><span class="line">                Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br></pre></td></tr></table></figure>
+
 <p>所有同步状态确认ok，<br>在db1上写入数据会同步到 db2 db3 db4<br>在db2上写入数据会同步到 db1 db3 db4</p>
 <h2 id="创建MMM管理用户"><a href="#创建MMM管理用户" class="headerlink" title="创建MMM管理用户"></a>创建MMM管理用户</h2><p>现在我们来创建需要的用户，我们需要创建3个不同的用户</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">功能</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">权限</th>
+<th align="left">功能</th>
+<th align="left">描述</th>
+<th align="left">权限</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">monitor user</td>
-<td style="text-align:left">mmm监控用于对mysql服务器进程健康检查</td>
-<td style="text-align:left">REPLICATION CLIENT</td>
+<tbody><tr>
+<td align="left">monitor user</td>
+<td align="left">mmm监控用于对mysql服务器进程健康检查</td>
+<td align="left">REPLICATION CLIENT</td>
 </tr>
 <tr>
-<td style="text-align:left">agent user</td>
-<td style="text-align:left">mmm代理用来更改只读模式，复制的主服务器等等</td>
-<td style="text-align:left">SUPER, REPLICATION CLIENT, PROCESS</td>
+<td align="left">agent user</td>
+<td align="left">mmm代理用来更改只读模式，复制的主服务器等等</td>
+<td align="left">SUPER, REPLICATION CLIENT, PROCESS</td>
 </tr>
 <tr>
-<td style="text-align:left">relication user</td>
-<td style="text-align:left">用于复制</td>
-<td style="text-align:left">REPLICATION SLAVE</td>
+<td align="left">relication user</td>
+<td align="left">用于复制</td>
+<td align="left">REPLICATION SLAVE</td>
 </tr>
-</tbody>
-</table>
-<p>创建用户语句的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">GRANT REPLICATION CLIENT                 ON *.* TO &apos;mmm_monitor&apos;@&apos;192.168.0.%&apos; IDENTIFIED BY &apos;monitor_password&apos;;</div><div class="line">GRANT SUPER, REPLICATION CLIENT, PROCESS ON *.* TO &apos;mmm_agent&apos;@&apos;192.168.0.%&apos;   IDENTIFIED BY &apos;agent_password&apos;;</div><div class="line">GRANT REPLICATION SLAVE                  ON *.* TO &apos;replication&apos;@&apos;192.168.0.%&apos; IDENTIFIED BY &apos;replication_password&apos;;</div></pre></td></tr></table></figure></p>
+<tr>
+<td align="left">创建用户语句的代码如下：</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRANT REPLICATION CLIENT                 ON *.* TO &apos;mmm_monitor&apos;@&apos;192.168.0.%&apos; IDENTIFIED BY &apos;monitor_password&apos;;</span><br><span class="line">GRANT SUPER, REPLICATION CLIENT, PROCESS ON *.* TO &apos;mmm_agent&apos;@&apos;192.168.0.%&apos;   IDENTIFIED BY &apos;agent_password&apos;;</span><br><span class="line">GRANT REPLICATION SLAVE                  ON *.* TO &apos;replication&apos;@&apos;192.168.0.%&apos; IDENTIFIED BY &apos;replication_password&apos;;</span><br></pre></td></tr></table></figure></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
 <p>注意：就以上这些允许用户连接的主机而言我们可以设置更多的限制，比如mmm监控主机是从192.168.0.10连接的，mmm代理和复制是从192.168.0.11 - 192.168.0.14连接的，</p>
-<h2 id="MMM安装部署"><a href="#MMM安装部署" class="headerlink" title="MMM安装部署"></a>MMM安装部署</h2><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>可选的：创建MMM脚本和配置文件的所有者，这将能为安全地管理监控脚本提供更简单的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">useradd --comment &quot;MMM Script owner&quot; --shell /sbin/nologin mmmd</div></pre></td></tr></table></figure></p>
-<h3 id="监控主机配置"><a href="#监控主机配置" class="headerlink" title="监控主机配置"></a>监控主机配置</h3><h4 id="安装依存包"><a href="#安装依存包" class="headerlink" title="安装依存包"></a>安装依存包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aptitude install liblog-log4perl-perl libmailtools-perl liblog-dispatch-perl libclass-singleton-perl libproc-daemon-perl libalgorithm-diff-perl libdbi-perl libdbd-mysql-perl</div></pre></td></tr></table></figure>
-<h4 id="安装MMM软件包"><a href="#安装MMM软件包" class="headerlink" title="安装MMM软件包"></a>安装MMM软件包</h4><p><a href="http://mysql-mmm.org/downloads" target="_blank" rel="external">MMM下载地址</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpkg -i mysql-mmm-common_*.deb mysql-mmm-monitor*.deb</div></pre></td></tr></table></figure></p>
-<h3 id="数据库主机配置"><a href="#数据库主机配置" class="headerlink" title="数据库主机配置"></a>数据库主机配置</h3><h4 id="安装依存包-1"><a href="#安装依存包-1" class="headerlink" title="安装依存包"></a>安装依存包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aptitude install liblog-log4perl-perl libmailtools-perl liblog-dispatch-perl iproute libnet-arp-perl libproc-daemon-perl libalgorithm-diff-perl libdbi-perl libdbd-mysql-perl</div></pre></td></tr></table></figure>
-<h4 id="安装MMM软件包-1"><a href="#安装MMM软件包-1" class="headerlink" title="安装MMM软件包"></a>安装MMM软件包</h4><p><a href="http://mysql-mmm.org/downloads" target="_blank" rel="external">MMM下载地址</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpkg -i mysql-mmm-common_*.deb mysql-mmm-agent_*.deb</div></pre></td></tr></table></figure></p>
-<h3 id="MMM文件配置"><a href="#MMM文件配置" class="headerlink" title="MMM文件配置"></a>MMM文件配置</h3><h4 id="通讯文件"><a href="#通讯文件" class="headerlink" title="通讯文件"></a>通讯文件</h4><p>mmm_common.conf<br>/etc/mysql-mmm/的文件权限要修改成640<br>编辑/etc/mysql-mmm/mmm_common.conf(所有主机的该文件都一样)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">active_master_role          writer</div><div class="line">    cluster_interface       eth0</div><div class="line">    pid_path                /var/run/mmmd_agent.pid</div><div class="line">    bin_path                /usr/lib/mysql-mmm/</div><div class="line"></div><div class="line">    replication_user        replication</div><div class="line">    replication_password    replication_password</div><div class="line"></div><div class="line">    agent_user              mmm_agent</div><div class="line">    agent_password          agent_password</div><div class="line"></div><div class="line">    ip                      192.168.0.11</div><div class="line">    mode                    master</div><div class="line">    peer                    db2</div><div class="line"></div><div class="line">    ip                      192.168.0.12</div><div class="line">    mode                    master</div><div class="line">    peer                    db1</div><div class="line"></div><div class="line">    ip                      192.168.0.13</div><div class="line">    mode                    slave</div><div class="line"></div><div class="line">    ip                      192.168.0.14</div><div class="line">    mode                    slave</div><div class="line"></div><div class="line">    hosts                   db1, db2</div><div class="line">    ips                     192.168.0.100</div><div class="line">    mode                    exclusive</div><div class="line"></div><div class="line">    hosts                   db1, db2, db3, db4</div><div class="line">    ips                     192.168.0.101, 192.168.0.102, 192.168.0.103, 192.168.0.104</div><div class="line">    mode                    balanced</div></pre></td></tr></table></figure></p>
+<h2 id="MMM安装部署"><a href="#MMM安装部署" class="headerlink" title="MMM安装部署"></a>MMM安装部署</h2><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>可选的：创建MMM脚本和配置文件的所有者，这将能为安全地管理监控脚本提供更简单的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd --comment &quot;MMM Script owner&quot; --shell /sbin/nologin mmmd</span><br></pre></td></tr></table></figure>
+
+<h3 id="监控主机配置"><a href="#监控主机配置" class="headerlink" title="监控主机配置"></a>监控主机配置</h3><h4 id="安装依存包"><a href="#安装依存包" class="headerlink" title="安装依存包"></a>安装依存包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aptitude install liblog-log4perl-perl libmailtools-perl liblog-dispatch-perl libclass-singleton-perl libproc-daemon-perl libalgorithm-diff-perl libdbi-perl libdbd-mysql-perl</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装MMM软件包"><a href="#安装MMM软件包" class="headerlink" title="安装MMM软件包"></a>安装MMM软件包</h4><p><a href="http://mysql-mmm.org/downloads" target="_blank" rel="noopener">MMM下载地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i mysql-mmm-common_*.deb mysql-mmm-monitor*.deb</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库主机配置"><a href="#数据库主机配置" class="headerlink" title="数据库主机配置"></a>数据库主机配置</h3><h4 id="安装依存包-1"><a href="#安装依存包-1" class="headerlink" title="安装依存包"></a>安装依存包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aptitude install liblog-log4perl-perl libmailtools-perl liblog-dispatch-perl iproute libnet-arp-perl libproc-daemon-perl libalgorithm-diff-perl libdbi-perl libdbd-mysql-perl</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装MMM软件包-1"><a href="#安装MMM软件包-1" class="headerlink" title="安装MMM软件包"></a>安装MMM软件包</h4><p><a href="http://mysql-mmm.org/downloads" target="_blank" rel="noopener">MMM下载地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i mysql-mmm-common_*.deb mysql-mmm-agent_*.deb</span><br></pre></td></tr></table></figure>
+
+<h3 id="MMM文件配置"><a href="#MMM文件配置" class="headerlink" title="MMM文件配置"></a>MMM文件配置</h3><h4 id="通讯文件"><a href="#通讯文件" class="headerlink" title="通讯文件"></a>通讯文件</h4><p>mmm_common.conf<br>/etc/mysql-mmm/的文件权限要修改成640<br>编辑/etc/mysql-mmm/mmm_common.conf(所有主机的该文件都一样)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">active_master_role          writer</span><br><span class="line">    cluster_interface       eth0</span><br><span class="line">    pid_path                /var/run/mmmd_agent.pid</span><br><span class="line">    bin_path                /usr/lib/mysql-mmm/</span><br><span class="line"></span><br><span class="line">    replication_user        replication</span><br><span class="line">    replication_password    replication_password</span><br><span class="line"></span><br><span class="line">    agent_user              mmm_agent</span><br><span class="line">    agent_password          agent_password</span><br><span class="line"></span><br><span class="line">    ip                      192.168.0.11</span><br><span class="line">    mode                    master</span><br><span class="line">    peer                    db2</span><br><span class="line"></span><br><span class="line">    ip                      192.168.0.12</span><br><span class="line">    mode                    master</span><br><span class="line">    peer                    db1</span><br><span class="line"></span><br><span class="line">    ip                      192.168.0.13</span><br><span class="line">    mode                    slave</span><br><span class="line"></span><br><span class="line">    ip                      192.168.0.14</span><br><span class="line">    mode                    slave</span><br><span class="line"></span><br><span class="line">    hosts                   db1, db2</span><br><span class="line">    ips                     192.168.0.100</span><br><span class="line">    mode                    exclusive</span><br><span class="line"></span><br><span class="line">    hosts                   db1, db2, db3, db4</span><br><span class="line">    ips                     192.168.0.101, 192.168.0.102, 192.168.0.103, 192.168.0.104</span><br><span class="line">    mode                    balanced</span><br></pre></td></tr></table></figure>
+
 <p>拷贝 mmm_common.conf 到所有主机的/etc/mysql-mmm/ 目录下（5台主机都要拷贝）</p>
-<h4 id="客户端文件"><a href="#客户端文件" class="headerlink" title="客户端文件"></a>客户端文件</h4><p>mmm_agent.conf<br>在数据库主机上我们需要编辑/etc/mysql-mmm/mmm_agent.conf文件，根据其他主机的不同更改db1的值（db2就将db1更改成db2）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">include mmm_common.conf</div><div class="line">this db1</div></pre></td></tr></table></figure></p>
-<h3 id="监控文件"><a href="#监控文件" class="headerlink" title="监控文件"></a>监控文件</h3><p>mmm_mon.conf<br>在监控主机上我们需要编辑/etc/mysql-mmm/mmm_mon.conf文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">include mmm_common.conf</div><div class="line"></div><div class="line">    ip                      127.0.0.1</div><div class="line">    pid_path                /var/run/mmmd_mon.pid</div><div class="line">    bin_path                /usr/lib/mysql-mmm/</div><div class="line">    status_path             /var/lib/misc/mmmd_mon.status</div><div class="line">    ping_ips                192.168.0.11, 192.168.0.12, 192.168.0.13, 192.168.0.14</div><div class="line"></div><div class="line">    monitor_user            mmm_monitor</div><div class="line">    monitor_password        monitor_password</div><div class="line"></div><div class="line">debug 0</div></pre></td></tr></table></figure></p>
+<h4 id="客户端文件"><a href="#客户端文件" class="headerlink" title="客户端文件"></a>客户端文件</h4><p>mmm_agent.conf<br>在数据库主机上我们需要编辑/etc/mysql-mmm/mmm_agent.conf文件，根据其他主机的不同更改db1的值（db2就将db1更改成db2）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">include mmm_common.conf</span><br><span class="line">this db1</span><br></pre></td></tr></table></figure>
+
+<h3 id="监控文件"><a href="#监控文件" class="headerlink" title="监控文件"></a>监控文件</h3><p>mmm_mon.conf<br>在监控主机上我们需要编辑/etc/mysql-mmm/mmm_mon.conf文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">include mmm_common.conf</span><br><span class="line"></span><br><span class="line">    ip                      127.0.0.1</span><br><span class="line">    pid_path                /var/run/mmmd_mon.pid</span><br><span class="line">    bin_path                /usr/lib/mysql-mmm/</span><br><span class="line">    status_path             /var/lib/misc/mmmd_mon.status</span><br><span class="line">    ping_ips                192.168.0.11, 192.168.0.12, 192.168.0.13, 192.168.0.14</span><br><span class="line"></span><br><span class="line">    monitor_user            mmm_monitor</span><br><span class="line">    monitor_password        monitor_password</span><br><span class="line"></span><br><span class="line">debug 0</span><br></pre></td></tr></table></figure>
+
 <p>ping_ips选项是通过ping这些ip来确认监控机的网络连接是正常的，dubug修改为1 可以开启dubug模式，重启可见。</p>
-<h2 id="启动MMM客户端"><a href="#启动MMM客户端" class="headerlink" title="启动MMM客户端"></a>启动MMM客户端</h2><h3 id="配置系统代理"><a href="#配置系统代理" class="headerlink" title="配置系统代理"></a>配置系统代理</h3><p>（在数据库服务器上）编辑/etc/default/mysql-mmm-agent来开启代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ENABLED=1</div></pre></td></tr></table></figure></p>
-<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/mysql-mmm-agent start</div></pre></td></tr></table></figure>
-<h2 id="启动MMM监控端"><a href="#启动MMM监控端" class="headerlink" title="启动MMM监控端"></a>启动MMM监控端</h2><h3 id="配置系统代理-1"><a href="#配置系统代理-1" class="headerlink" title="配置系统代理"></a>配置系统代理</h3><p>（在监控服务器上）编辑/etc/default/mysql-mmm-monitor文件来开启监控<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ENABLED=1</div></pre></td></tr></table></figure></p>
-<h3 id="修改bug"><a href="#修改bug" class="headerlink" title="修改bug"></a>修改bug</h3><p>编辑 /usr/share/perl5/MMM/Monitor/Agent.pm 在41行处插入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (! defined($old_state)) &#123; $old_state = &apos;certinally not new_state&apos;; &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="启动服务-1"><a href="#启动服务-1" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/mysql-mmm-monitor start</div></pre></td></tr></table></figure>
-<p>等待几秒钟mmmd_mon启动，在几秒钟后你可以用mmm_control来检查群集的状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># mmm_control show</div><div class="line">db1(192.168.0.11) master/AWAITING_RECOVERY. Roles:</div><div class="line">db2(192.168.0.12) master/AWAITING_RECOVERY. Roles:</div><div class="line">db3(192.168.0.13) slave/AWAITING_RECOVERY. Roles:</div><div class="line">db4(192.168.0.14) slave/AWAITING_RECOVERY. Roles:</div></pre></td></tr></table></figure></p>
-<p>设置主机状态为在线状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mmm_control set_online db1</div><div class="line">mmm_control set_online db2</div><div class="line">mmm_control set_online db3</div><div class="line">mmm_control set_online db4</div><div class="line"></div><div class="line">OK: State of &apos;db1&apos; changed to ONLINE. Now you can wait some time and check its new roles!</div><div class="line">OK: State of &apos;db2&apos; changed to ONLINE. Now you can wait some time and check its new roles!</div><div class="line">OK: State of &apos;db3&apos; changed to ONLINE. Now you can wait some time and check its new roles!</div><div class="line">OK: State of &apos;db4&apos; changed to ONLINE. Now you can wait some time and check its new roles!</div></pre></td></tr></table></figure></p>
-<h2 id="其他错误问题修改"><a href="#其他错误问题修改" class="headerlink" title="其他错误问题修改"></a>其他错误问题修改</h2><h3 id="line-42错误"><a href="#line-42错误" class="headerlink" title="line 42错误"></a>line 42错误</h3><p>Use of uninitialized value $old_state in string ne at /usr/share/perl5/MMM/Monitor/Agent.pm line 42.<br>解决方法：<br>编辑 /usr/share/perl5/MMM/Monitor/Agent.pm 在41行处插入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (! defined($old_state)) &#123; $old_state = &apos;certinally not new_state&apos;; &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="line-132错误"><a href="#line-132错误" class="headerlink" title="line 132错误"></a>line 132错误</h3><p>Starting MMM Agent Daemon: Configuration file /etc/mysql-mmm/mmm_agent.conf is world readable! at /usr/lib/perl5/vendor_perl/5.8.8/MMM/Common/Config.pm line 132<br>解决方法：<br>修改mysql-mmm目录的权限为640<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 640 /etc/mysql-mmm/*</div></pre></td></tr></table></figure></p>
+<h2 id="启动MMM客户端"><a href="#启动MMM客户端" class="headerlink" title="启动MMM客户端"></a>启动MMM客户端</h2><h3 id="配置系统代理"><a href="#配置系统代理" class="headerlink" title="配置系统代理"></a>配置系统代理</h3><p>（在数据库服务器上）编辑/etc/default/mysql-mmm-agent来开启代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ENABLED=1</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql-mmm-agent start</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动MMM监控端"><a href="#启动MMM监控端" class="headerlink" title="启动MMM监控端"></a>启动MMM监控端</h2><h3 id="配置系统代理-1"><a href="#配置系统代理-1" class="headerlink" title="配置系统代理"></a>配置系统代理</h3><p>（在监控服务器上）编辑/etc/default/mysql-mmm-monitor文件来开启监控</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ENABLED=1</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改bug"><a href="#修改bug" class="headerlink" title="修改bug"></a>修改bug</h3><p>编辑 /usr/share/perl5/MMM/Monitor/Agent.pm 在41行处插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (! defined($old_state)) &#123; $old_state = &apos;certinally not new_state&apos;; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动服务-1"><a href="#启动服务-1" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql-mmm-monitor start</span><br></pre></td></tr></table></figure>
+
+<p>等待几秒钟mmmd_mon启动，在几秒钟后你可以用mmm_control来检查群集的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># mmm_control show</span><br><span class="line">db1(192.168.0.11) master/AWAITING_RECOVERY. Roles:</span><br><span class="line">db2(192.168.0.12) master/AWAITING_RECOVERY. Roles:</span><br><span class="line">db3(192.168.0.13) slave/AWAITING_RECOVERY. Roles:</span><br><span class="line">db4(192.168.0.14) slave/AWAITING_RECOVERY. Roles:</span><br></pre></td></tr></table></figure>
+
+<p>设置主机状态为在线状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mmm_control set_online db1</span><br><span class="line">mmm_control set_online db2</span><br><span class="line">mmm_control set_online db3</span><br><span class="line">mmm_control set_online db4</span><br><span class="line"></span><br><span class="line">OK: State of &apos;db1&apos; changed to ONLINE. Now you can wait some time and check its new roles!</span><br><span class="line">OK: State of &apos;db2&apos; changed to ONLINE. Now you can wait some time and check its new roles!</span><br><span class="line">OK: State of &apos;db3&apos; changed to ONLINE. Now you can wait some time and check its new roles!</span><br><span class="line">OK: State of &apos;db4&apos; changed to ONLINE. Now you can wait some time and check its new roles!</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他错误问题修改"><a href="#其他错误问题修改" class="headerlink" title="其他错误问题修改"></a>其他错误问题修改</h2><h3 id="line-42错误"><a href="#line-42错误" class="headerlink" title="line 42错误"></a>line 42错误</h3><p>Use of uninitialized value $old_state in string ne at /usr/share/perl5/MMM/Monitor/Agent.pm line 42.<br>解决方法：<br>编辑 /usr/share/perl5/MMM/Monitor/Agent.pm 在41行处插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (! defined($old_state)) &#123; $old_state = &apos;certinally not new_state&apos;; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="line-132错误"><a href="#line-132错误" class="headerlink" title="line 132错误"></a>line 132错误</h3><p>Starting MMM Agent Daemon: Configuration file /etc/mysql-mmm/mmm_agent.conf is world readable! at /usr/lib/perl5/vendor_perl/5.8.8/MMM/Common/Config.pm line 132<br>解决方法：<br>修改mysql-mmm目录的权限为640</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 640 /etc/mysql-mmm/*</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -516,7 +555,7 @@
         <p><span>本文标题:</span><a href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-08-02, 16:32:11</p>
-        <p><span>最后更新:</span>2017-08-02, 19:47:19</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/02/mysql-mmm/" title="mysql-mmm 部署指南">http://blog.mooom.top/2017/08/02/mysql-mmm/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/08/02/mysql-mmm/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -552,7 +591,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#部署环境准备"><span class="toc-number">1.</span> <span class="toc-text">部署环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql-数据库配置"><span class="toc-number">2.</span> <span class="toc-text">Mysql 数据库配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置主从同步"><span class="toc-number">2.1.</span> <span class="toc-text">设置主从同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#锁表禁止写入"><span class="toc-number">2.1.1.</span> <span class="toc-text">锁表禁止写入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示db1的MASTER地址"><span class="toc-number">2.1.2.</span> <span class="toc-text">显示db1的MASTER地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#备份所有数据库-新的终端打开"><span class="toc-number">2.1.3.</span> <span class="toc-text">备份所有数据库(新的终端打开)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对数据库解除锁定"><span class="toc-number">2.1.4.</span> <span class="toc-text">对数据库解除锁定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库同步到其他"><span class="toc-number">2.1.5.</span> <span class="toc-text">数据库同步到其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置同步"><span class="toc-number">2.1.6.</span> <span class="toc-text">设置同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动从库slave同步"><span class="toc-number">2.1.7.</span> <span class="toc-text">启动从库slave同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查同步情况"><span class="toc-number">2.1.8.</span> <span class="toc-text">检查同步情况</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置主主同步"><span class="toc-number">2.2.</span> <span class="toc-text">设置主主同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询db2的MASTER状态"><span class="toc-number">2.2.1.</span> <span class="toc-text">查询db2的MASTER状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置db1到db2的同步"><span class="toc-number">2.2.2.</span> <span class="toc-text">配置db1到db2的同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动db1的slave进程"><span class="toc-number">2.2.3.</span> <span class="toc-text">启动db1的slave进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确认db1的同步状态"><span class="toc-number">2.2.4.</span> <span class="toc-text">确认db1的同步状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建MMM管理用户"><span class="toc-number">3.</span> <span class="toc-text">创建MMM管理用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MMM安装部署"><span class="toc-number">4.</span> <span class="toc-text">MMM安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户"><span class="toc-number">4.1.</span> <span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控主机配置"><span class="toc-number">4.2.</span> <span class="toc-text">监控主机配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依存包"><span class="toc-number">4.2.1.</span> <span class="toc-text">安装依存包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装MMM软件包"><span class="toc-number">4.2.2.</span> <span class="toc-text">安装MMM软件包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库主机配置"><span class="toc-number">4.3.</span> <span class="toc-text">数据库主机配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依存包-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">安装依存包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装MMM软件包-1"><span class="toc-number">4.3.2.</span> <span class="toc-text">安装MMM软件包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MMM文件配置"><span class="toc-number">4.4.</span> <span class="toc-text">MMM文件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通讯文件"><span class="toc-number">4.4.1.</span> <span class="toc-text">通讯文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端文件"><span class="toc-number">4.4.2.</span> <span class="toc-text">客户端文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控文件"><span class="toc-number">4.5.</span> <span class="toc-text">监控文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动MMM客户端"><span class="toc-number">5.</span> <span class="toc-text">启动MMM客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置系统代理"><span class="toc-number">5.1.</span> <span class="toc-text">配置系统代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务"><span class="toc-number">5.2.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动MMM监控端"><span class="toc-number">6.</span> <span class="toc-text">启动MMM监控端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置系统代理-1"><span class="toc-number">6.1.</span> <span class="toc-text">配置系统代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改bug"><span class="toc-number">6.2.</span> <span class="toc-text">修改bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务-1"><span class="toc-number">6.3.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他错误问题修改"><span class="toc-number">7.</span> <span class="toc-text">其他错误问题修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#line-42错误"><span class="toc-number">7.1.</span> <span class="toc-text">line 42错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-132错误"><span class="toc-number">7.2.</span> <span class="toc-text">line 132错误</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#部署环境准备"><span class="toc-number">1.</span> <span class="toc-text">部署环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#显示db1的MASTER地址"><span class="toc-number">1.0.1.</span> <span class="toc-text">显示db1的MASTER地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#备份所有数据库-新的终端打开"><span class="toc-number">1.0.2.</span> <span class="toc-text">备份所有数据库(新的终端打开)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对数据库解除锁定"><span class="toc-number">1.0.3.</span> <span class="toc-text">对数据库解除锁定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库同步到其他"><span class="toc-number">1.0.4.</span> <span class="toc-text">数据库同步到其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置同步"><span class="toc-number">1.0.5.</span> <span class="toc-text">设置同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动从库slave同步"><span class="toc-number">1.0.6.</span> <span class="toc-text">启动从库slave同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查同步情况"><span class="toc-number">1.0.7.</span> <span class="toc-text">检查同步情况</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置主主同步"><span class="toc-number">1.1.</span> <span class="toc-text">设置主主同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询db2的MASTER状态"><span class="toc-number">1.1.1.</span> <span class="toc-text">查询db2的MASTER状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置db1到db2的同步"><span class="toc-number">1.1.2.</span> <span class="toc-text">配置db1到db2的同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动db1的slave进程"><span class="toc-number">1.1.3.</span> <span class="toc-text">启动db1的slave进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确认db1的同步状态"><span class="toc-number">1.1.4.</span> <span class="toc-text">确认db1的同步状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建MMM管理用户"><span class="toc-number">2.</span> <span class="toc-text">创建MMM管理用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MMM安装部署"><span class="toc-number">3.</span> <span class="toc-text">MMM安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户"><span class="toc-number">3.1.</span> <span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控主机配置"><span class="toc-number">3.2.</span> <span class="toc-text">监控主机配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依存包"><span class="toc-number">3.2.1.</span> <span class="toc-text">安装依存包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装MMM软件包"><span class="toc-number">3.2.2.</span> <span class="toc-text">安装MMM软件包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库主机配置"><span class="toc-number">3.3.</span> <span class="toc-text">数据库主机配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依存包-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装依存包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装MMM软件包-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">安装MMM软件包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MMM文件配置"><span class="toc-number">3.4.</span> <span class="toc-text">MMM文件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通讯文件"><span class="toc-number">3.4.1.</span> <span class="toc-text">通讯文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端文件"><span class="toc-number">3.4.2.</span> <span class="toc-text">客户端文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控文件"><span class="toc-number">3.5.</span> <span class="toc-text">监控文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动MMM客户端"><span class="toc-number">4.</span> <span class="toc-text">启动MMM客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置系统代理"><span class="toc-number">4.1.</span> <span class="toc-text">配置系统代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务"><span class="toc-number">4.2.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动MMM监控端"><span class="toc-number">5.</span> <span class="toc-text">启动MMM监控端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置系统代理-1"><span class="toc-number">5.1.</span> <span class="toc-text">配置系统代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改bug"><span class="toc-number">5.2.</span> <span class="toc-text">修改bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务-1"><span class="toc-number">5.3.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他错误问题修改"><span class="toc-number">6.</span> <span class="toc-text">其他错误问题修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#line-42错误"><span class="toc-number">6.1.</span> <span class="toc-text">line 42错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-132错误"><span class="toc-number">6.2.</span> <span class="toc-text">line 132错误</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -622,7 +661,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -636,10 +675,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -747,7 +786,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 

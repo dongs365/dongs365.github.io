@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -22,12 +22,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/08/02/mongodb/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。">
-<meta property="og:updated_time" content="2017-08-02T09:45:21.199Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb 部署">
 <meta name="twitter:description" content="MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,7 +100,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -117,6 +118,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -311,57 +319,78 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。<br><a id="more"></a></p>
+        <p>MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。</p>
+<a id="more"></a>
 <h2 id="MongoDB社区版简介"><a href="#MongoDB社区版简介" class="headerlink" title="MongoDB社区版简介"></a>MongoDB社区版简介</h2><p>MongoDB中的一个记录是一个文档，它是一个由字段和值对组成的数据结构。MongoDB文档类似于JSON对象。字段的值可能包括其他文档，数组和文档数组。</p>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>高性能<br>丰富查询语言<br>高可用性<br>水平可扩展性<br>支持多种存储引擎</p>
 <h3 id="包内容"><a href="#包内容" class="headerlink" title="包内容"></a>包内容</h3><p>MongoDB在自己的存储库中提供正式支持的软件包。此存储库包含以下软件包：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">包名称</th>
-<th style="text-align:left">描述</th>
+<th align="left">包名称</th>
+<th align="left">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">mongodb-org</td>
-<td style="text-align:left">将自动安装以下列出的四个组件包</td>
+<tbody><tr>
+<td align="left">mongodb-org</td>
+<td align="left">将自动安装以下列出的四个组件包</td>
 </tr>
 <tr>
-<td style="text-align:left">mongodb-org-server</td>
-<td style="text-align:left">包含mongod守护程序和关联的配置和init脚本。</td>
+<td align="left">mongodb-org-server</td>
+<td align="left">包含mongod守护程序和关联的配置和init脚本。</td>
 </tr>
 <tr>
-<td style="text-align:left">mongodb-org-mongos</td>
-<td style="text-align:left">包含mongos守护进程。</td>
+<td align="left">mongodb-org-mongos</td>
+<td align="left">包含mongos守护进程。</td>
 </tr>
 <tr>
-<td style="text-align:left">mongodb-org-shell</td>
-<td style="text-align:left">包含mongoshell。</td>
+<td align="left">mongodb-org-shell</td>
+<td align="left">包含mongoshell。</td>
 </tr>
 <tr>
-<td style="text-align:left">mongodb-org-tools</td>
-<td style="text-align:left">包含以下的MongoDB工具 mongoimport bsondump, mongodump, mongoexport, mongofiles, mongooplog, mongoperf, mongorestore, mongostat, and mongotop</td>
+<td align="left">mongodb-org-tools</td>
+<td align="left">包含以下的MongoDB工具 mongoimport bsondump, mongodump, mongoexport, mongofiles, mongooplog, mongoperf, mongorestore, mongostat, and mongotop</td>
 </tr>
-</tbody>
-</table>
-<h2 id="安装MongoDB社区版"><a href="#安装MongoDB社区版" class="headerlink" title="安装MongoDB社区版"></a>安装MongoDB社区版</h2><h3 id="Redhat"><a href="#Redhat" class="headerlink" title="Redhat"></a>Redhat</h3><h4 id="配置YUM源"><a href="#配置YUM源" class="headerlink" title="配置YUM源"></a>配置YUM源</h4><p>创建一个/etc/yum.repos.d/mongodb-org-3.4.repo文件，使您可以直接安装MongoDB yum。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[mongodb-org-3.4]</div><div class="line">name = MongoDB Repository</div><div class="line">baseurl = https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</div><div class="line">gpgcheck = 1</div><div class="line">enabled = 1</div><div class="line">gpgkey = https：// www.mongodb.org/static/pgp/server-3.4.asc</div></pre></td></tr></table></figure></p>
-<h4 id="安装MongoDB包"><a href="#安装MongoDB包" class="headerlink" title="安装MongoDB包"></a>安装MongoDB包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y mongodb-org</div></pre></td></tr></table></figure>
-<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><h4 id="导入包APT管理的公钥"><a href="#导入包APT管理的公钥" class="headerlink" title="导入包APT管理的公钥"></a>导入包APT管理的公钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</div></pre></td></tr></table></figure>
-<h4 id="为MongoDB创建一个安装源文件"><a href="#为MongoDB创建一个安装源文件" class="headerlink" title="为MongoDB创建一个安装源文件"></a>为MongoDB创建一个安装源文件</h4><p>/etc/apt/sources.list.d/mongodb-org-3.4.list使用适合您的Ubuntu版本的命令创建列表文件：<br>Ubuntu 12.04<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</div></pre></td></tr></table></figure></p>
-<p>Ubuntu 14.04<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</div></pre></td></tr></table></figure></p>
-<p>Ubuntu 16.04<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</div></pre></td></tr></table></figure></p>
-<h4 id="重新加载本地数据源。"><a href="#重新加载本地数据源。" class="headerlink" title="重新加载本地数据源。"></a>重新加载本地数据源。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
-<h4 id="安装MongoDB包-1"><a href="#安装MongoDB包-1" class="headerlink" title="安装MongoDB包"></a>安装MongoDB包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y mongodb-org</div></pre></td></tr></table></figure>
-<h2 id="运行MongoDB社区版"><a href="#运行MongoDB社区版" class="headerlink" title="运行MongoDB社区版"></a>运行MongoDB社区版</h2><h3 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mongod start</div></pre></td></tr></table></figure>
-<h3 id="验证MongoDB是否成功启动"><a href="#验证MongoDB是否成功启动" class="headerlink" title="验证MongoDB是否成功启动"></a>验证MongoDB是否成功启动</h3><p>mongod通过检查日志文件的内容进行/var/log/mongodb/mongod.log 读取，验证进程是否成功启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[initandlisten] waiting for connections on port &lt;port&gt;</div></pre></td></tr></table></figure></p>
+</tbody></table>
+<h2 id="安装MongoDB社区版"><a href="#安装MongoDB社区版" class="headerlink" title="安装MongoDB社区版"></a>安装MongoDB社区版</h2><h3 id="Redhat"><a href="#Redhat" class="headerlink" title="Redhat"></a>Redhat</h3><h4 id="配置YUM源"><a href="#配置YUM源" class="headerlink" title="配置YUM源"></a>配置YUM源</h4><p>创建一个/etc/yum.repos.d/mongodb-org-3.4.repo文件，使您可以直接安装MongoDB yum。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mongodb-org-3.4]</span><br><span class="line">name = MongoDB Repository</span><br><span class="line">baseurl = https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</span><br><span class="line">gpgcheck = 1</span><br><span class="line">enabled = 1</span><br><span class="line">gpgkey = https：// www.mongodb.org/static/pgp/server-3.4.asc</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装MongoDB包"><a href="#安装MongoDB包" class="headerlink" title="安装MongoDB包"></a>安装MongoDB包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><h4 id="导入包APT管理的公钥"><a href="#导入包APT管理的公钥" class="headerlink" title="导入包APT管理的公钥"></a>导入包APT管理的公钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</span><br></pre></td></tr></table></figure>
+
+<h4 id="为MongoDB创建一个安装源文件"><a href="#为MongoDB创建一个安装源文件" class="headerlink" title="为MongoDB创建一个安装源文件"></a>为MongoDB创建一个安装源文件</h4><p>/etc/apt/sources.list.d/mongodb-org-3.4.list使用适合您的Ubuntu版本的命令创建列表文件：<br>Ubuntu 12.04</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu 14.04</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu 16.04</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+
+<h4 id="重新加载本地数据源。"><a href="#重新加载本地数据源。" class="headerlink" title="重新加载本地数据源。"></a>重新加载本地数据源。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装MongoDB包-1"><a href="#安装MongoDB包-1" class="headerlink" title="安装MongoDB包"></a>安装MongoDB包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y mongodb-org</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行MongoDB社区版"><a href="#运行MongoDB社区版" class="headerlink" title="运行MongoDB社区版"></a>运行MongoDB社区版</h2><h3 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mongod start</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证MongoDB是否成功启动"><a href="#验证MongoDB是否成功启动" class="headerlink" title="验证MongoDB是否成功启动"></a>验证MongoDB是否成功启动</h3><p>mongod通过检查日志文件的内容进行/var/log/mongodb/mongod.log 读取，验证进程是否成功启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[initandlisten] waiting for connections on port &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
 <p>其中<port>被配置为在该端口/etc/mongod.conf，27017默认端口</port></p>
-<h3 id="停止MongoDB"><a href="#停止MongoDB" class="headerlink" title="停止MongoDB"></a>停止MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mongod stop</div></pre></td></tr></table></figure>
-<h3 id="重新启动MongoDB"><a href="#重新启动MongoDB" class="headerlink" title="重新启动MongoDB"></a>重新启动MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mongod restart</div></pre></td></tr></table></figure>
-<h3 id="开始使用MongoDB"><a href="#开始使用MongoDB" class="headerlink" title="开始使用MongoDB"></a>开始使用MongoDB</h3><h2 id="卸载MongoDB社区版"><a href="#卸载MongoDB社区版" class="headerlink" title="卸载MongoDB社区版"></a>卸载MongoDB社区版</h2><p>###停止MongoDB<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mongod stop</div></pre></td></tr></table></figure></p>
-<h3 id="删除软件包"><a href="#删除软件包" class="headerlink" title="删除软件包"></a>删除软件包</h3><h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get purge mongodb-org *</div></pre></td></tr></table></figure>
-<h4 id="redhat"><a href="#redhat" class="headerlink" title="redhat"></a>redhat</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum erase $(rpm -qa | grep mongodb-org)</div></pre></td></tr></table></figure>
-<h3 id="删除数据目录"><a href="#删除数据目录" class="headerlink" title="删除数据目录"></a>删除数据目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo rm -r / var / log / mongodb</div><div class="line">sudo rm -r / var / lib / mongodb</div></pre></td></tr></table></figure>
+<h3 id="停止MongoDB"><a href="#停止MongoDB" class="headerlink" title="停止MongoDB"></a>停止MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mongod stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="重新启动MongoDB"><a href="#重新启动MongoDB" class="headerlink" title="重新启动MongoDB"></a>重新启动MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="开始使用MongoDB"><a href="#开始使用MongoDB" class="headerlink" title="开始使用MongoDB"></a>开始使用MongoDB</h3><h2 id="卸载MongoDB社区版"><a href="#卸载MongoDB社区版" class="headerlink" title="卸载MongoDB社区版"></a>卸载MongoDB社区版</h2><p>###停止MongoDB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除软件包"><a href="#删除软件包" class="headerlink" title="删除软件包"></a>删除软件包</h3><h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge mongodb-org *</span><br></pre></td></tr></table></figure>
+
+<h4 id="redhat"><a href="#redhat" class="headerlink" title="redhat"></a>redhat</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase $(rpm -qa | grep mongodb-org)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据目录"><a href="#删除数据目录" class="headerlink" title="删除数据目录"></a>删除数据目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r / var / log / mongodb</span><br><span class="line">sudo rm -r / var / lib / mongodb</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -373,7 +402,7 @@
         <p><span>本文标题:</span><a href="/2017/08/02/mongodb/">mongodb 部署</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-08-02, 16:31:59</p>
-        <p><span>最后更新:</span>2017-08-02, 17:45:21</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/02/mongodb/" title="mongodb 部署">http://blog.mooom.top/2017/08/02/mongodb/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/08/02/mongodb/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -479,7 +508,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -493,10 +522,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -604,7 +633,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 

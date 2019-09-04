@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
 
     <!--[if lt IE 9]>
         <style>body {display: none; background: none !important} </style>
@@ -8,10 +8,10 @@
     <![endif]-->
 
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="dongs365" />
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="dongs365">
 
 
 
@@ -22,12 +22,13 @@
 <meta property="og:url" content="http://blog.mooom.top/2017/08/05/sshkey/index.html">
 <meta property="og:site_name" content="MOOOM">
 <meta property="og:description" content="SSH 是较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。使用SSH密钥可以实现免密码登陆。">
-<meta property="og:updated_time" content="2017-11-30T01:46:38.608Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-12T08:07:25.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh 密钥登陆">
 <meta name="twitter:description" content="SSH 是较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。使用SSH密钥可以实现免密码登陆。">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
     <link rel="alternate" href="/atom.xml" title="MOOOM" type="application/atom+xml">
@@ -73,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,7 +100,7 @@
     </script>
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -117,6 +118,13 @@
         <p class="header-subtitle">生活中的那一秒</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -311,14 +319,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <link rel="stylesheet" type="text/css" href="/assets/css/DPlayer.min.css"><script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>SSH 是较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。使用SSH密钥可以实现免密码登陆。<br><a id="more"></a></p>
-<h2 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -P</div></pre></td></tr></table></figure>
+        <p>SSH 是较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。使用SSH密钥可以实现免密码登陆。</p>
+<a id="more"></a>
+<h2 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -P</span><br></pre></td></tr></table></figure>
+
 <p>在~/.ssh下会生成公钥和私钥<br>authorized_keys:存放远程免密登录的公钥,主要通过这个文件记录多台机器的公钥<br>id_rsa : 生成的私钥文件<br>id_rsa.pub ： 生成的公钥文件<br>know_hosts : 已知的主机公钥清单</p>
-<h2 id="复制公钥到主机"><a href="#复制公钥到主机" class="headerlink" title="复制公钥到主机"></a>复制公钥到主机</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@10.1.15.111</div></pre></td></tr></table></figure>
+<h2 id="复制公钥到主机"><a href="#复制公钥到主机" class="headerlink" title="复制公钥到主机"></a>复制公钥到主机</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@10.1.15.111</span><br></pre></td></tr></table></figure>
+
 <p>会把id_rsa.pub中内容追加到远程主机~/.ssh/authorized_keys中</p>
-<h2 id="验证配置-正常登陆"><a href="#验证配置-正常登陆" class="headerlink" title="验证配置,正常登陆"></a>验证配置,正常登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@10.1.15.111</div></pre></td></tr></table></figure>
-<h2 id="多个私钥配置"><a href="#多个私钥配置" class="headerlink" title="多个私钥配置"></a>多个私钥配置</h2><h3 id="新增配置文件并修改权限"><a href="#新增配置文件并修改权限" class="headerlink" title="新增配置文件并修改权限"></a>新增配置文件并修改权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch ~/.ssh/config</div><div class="line">chmod 600 ~/.ssh/config</div></pre></td></tr></table></figure>
-<h3 id="添加配置到配置文件"><a href="#添加配置到配置文件" class="headerlink" title="添加配置到配置文件"></a>添加配置到配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Host 10.1.15.*</div><div class="line">    IdentityFile ~/.ssh/id_rsa.15</div><div class="line">    User root</div><div class="line"></div><div class="line">Host *.abc.com  </div><div class="line">    IdentityFile ~/.ssh/id_rsa.abc</div><div class="line">    User root  </div><div class="line"></div><div class="line">Host github.com  </div><div class="line">    IdentityFile ~/.ssh/id_rsa.github</div><div class="line">    User git</div></pre></td></tr></table></figure>
+<h2 id="验证配置-正常登陆"><a href="#验证配置-正常登陆" class="headerlink" title="验证配置,正常登陆"></a>验证配置,正常登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@10.1.15.111</span><br></pre></td></tr></table></figure>
+
+<h2 id="多个私钥配置"><a href="#多个私钥配置" class="headerlink" title="多个私钥配置"></a>多个私钥配置</h2><h3 id="新增配置文件并修改权限"><a href="#新增配置文件并修改权限" class="headerlink" title="新增配置文件并修改权限"></a>新增配置文件并修改权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch ~/.ssh/config</span><br><span class="line">chmod 600 ~/.ssh/config</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加配置到配置文件"><a href="#添加配置到配置文件" class="headerlink" title="添加配置到配置文件"></a>添加配置到配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Host 10.1.15.*</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa.15</span><br><span class="line">    User root</span><br><span class="line"></span><br><span class="line">Host *.abc.com  </span><br><span class="line">    IdentityFile ~/.ssh/id_rsa.abc</span><br><span class="line">    User root  </span><br><span class="line"></span><br><span class="line">Host github.com  </span><br><span class="line">    IdentityFile ~/.ssh/id_rsa.github</span><br><span class="line">    User git</span><br></pre></td></tr></table></figure>
+
 <h3 id="ssh-keygen-参数"><a href="#ssh-keygen-参数" class="headerlink" title="ssh-keygen 参数"></a>ssh-keygen 参数</h3><p>ssh-keygen 用于为生成、管理和转换认证密钥，包括 RSA 和 DSA 两种密钥。<br>密钥类型可以用 -t 选项指定。如果没有指定则默认生成用于SSH-2的RSA密钥。</p>
 <p>-a trials<br>        在使用 -T 对 DH-GEX 候选素数进行安全筛选时需要执行的基本测试数量。<br>-B      显示指定的公钥/私钥文件的 bubblebabble 摘要。<br>-b bits<br>        指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。DSA密钥必须恰好是1024位(FIPS 186-2 标准的要求)。<br>-C comment<br>        提供一个新注释<br>-c      要求修改私钥和公钥文件中的注释。本选项只支持 RSA1 密钥。<br>        程序将提示输入私钥文件名、密语(如果存在)、新注释。<br>-D reader<br>        下载存储在智能卡 reader 里的 RSA 公钥。<br>-e      读取OpenSSH的私钥或公钥文件，并以 RFC 4716 SSH 公钥文件格式在 stdout 上显示出来。<br>        该选项能够为多种商业版本的 SSH 输出密钥。<br>-F hostname<br>        在 known_hosts 文件中搜索指定的 hostname ，并列出所有的匹配项。<br>        这个选项主要用于查找散列过的主机名/ip地址，还可以和 -H 选项联用打印找到的公钥的散列值。<br>-f filename<br>        指定密钥文件名。<br>-G output_file<br>        为 DH-GEX 产生候选素数。这些素数必须在使用之前使用 -T 选项进行安全筛选。<br>-g      在使用 -r 打印指纹资源记录的时候使用通用的 DNS 格式。<br>-H      对 known_hosts 文件进行散列计算。这将把文件中的所有主机名/ip地址替换为相应的散列值。<br>        原来文件的内容将会添加一个”.old”后缀后保存。这些散列值只能被 ssh 和 sshd 使用。<br>        这个选项不会修改已经经过散列的主机名/ip地址，因此可以在部分公钥已经散列过的文件上安全使用。<br>-i      读取未加密的SSH-2兼容的私钥/公钥文件，然后在 stdout 显示OpenSSH兼容的私钥/公钥。<br>        该选项主要用于从多种商业版本的SSH中导入密钥。<br>-l      显示公钥文件的指纹数据。它也支持 RSA1 的私钥。<br>        对于RSA和DSA密钥，将会寻找对应的公钥文件，然后显示其指纹数据。<br>-M memory<br>        指定在生成 DH-GEXS 候选素数的时候最大内存用量(MB)。<br>-N new_passphrase<br>        提供一个新的密语。<br>-P passphrase<br>        提供(旧)密语。<br>-p      要求改变某私钥文件的密语而不重建私钥。程序将提示输入私钥文件名、原来的密语、以及两次输入新密语。<br>-q      安静模式。用于在 /etc/rc 中创建新密钥的时候。<br>-R hostname<br>        从 known_hosts 文件中删除所有属于 hostname 的密钥。<br>        这个选项主要用于删除经过散列的主机(参见 -H 选项)的密钥。<br>-r hostname<br>        打印名为 hostname 的公钥文件的 SSHFP 指纹资源记录。<br>-S start<br>        指定在生成 DH-GEX 候选模数时的起始点(16进制)。<br>-T output_file<br>        测试 Diffie-Hellman group exchange 候选素数(由 -G 选项生成)的安全性。<br>-t type<br>        指定要创建的密钥类型。可以使用：”rsa1”(SSH-1) “rsa”(SSH-2) “dsa”(SSH-2)<br>-U reader<br>        把现存的RSA私钥上传到智能卡 reader<br>-v      详细模式。ssh-keygen 将会输出处理过程的详细调试信息。常用于调试模数的产生过程。<br>        重复使用多个 -v 选项将会增加信息的详细程度(最大3次)。<br>-W generator<br>        指定在为 DH-GEX 测试候选模数时想要使用的 generator<br>-y      读取OpenSSH专有格式的公钥文件，并将OpenSSH公钥显示在 stdout 上。</p>
 <p>~/.ssh/identity<br>        该用户默认的 RSA1 身份认证私钥(SSH-1)。此文件的权限应当至少限制为”600”。<br>        生成密钥的时候可以指定采用密语来加密该私钥(3DES)。</p>
@@ -336,7 +350,7 @@
         <p><span>本文标题:</span><a href="/2017/08/05/sshkey/">ssh 密钥登陆</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
         <p><span>发布时间:</span>2017-08-05, 17:43:47</p>
-        <p><span>最后更新:</span>2017-11-30, 09:46:38</p>
+        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/05/sshkey/" title="ssh 密钥登陆">http://blog.mooom.top/2017/08/05/sshkey/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/08/05/sshkey/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -442,7 +456,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/laaspasssaas/">Laas Pass Saas 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockerdemo/">docker镜像实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomxxbb/">docker命令 版本信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercombdjx/">docker命令 本地镜像管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomjxck/">docker命令 镜像仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrootfs/">docker命令 rootfs命</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomrqcz/">docker命令 容器操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/dockercomsmzq/">docker命令 生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/dockerfile/">dockerfile</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/crontab/">crontab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/05/sshkey/">ssh 密钥登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-zctb/">mysql-5.7部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmmcs/">mysql-mmm参数说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mysql-mmm/">mysql-mmm 部署指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/mongodb/">mongodb 部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/music/">hexo插入音频</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/excelsjs/">Excel 随机字符数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/GoogleAuthenticator/">GoogleAuthenticator系统二次验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/curl/">curl</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/tcpdump/">tcpdump</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/netstat/">netstat</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/guorenzhiyuguoye/">《 寡人之于国也 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/quanxuewyw/">《 劝 学 》</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/23/shishuowyw/">《 师 说 》</a></li></ul>
 
 
 
@@ -456,10 +470,10 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i>
-                2015-2018 dongs365
+                2015-2019 dongs365
             </div>
             <div class="footer-right">
-                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  vundefined">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
+                <a href="#" target="_blank" title="MOOOM"> </a>  <a href="/" target="_blank" title="MOOOM  v">GO</a> by MOOOM<i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
@@ -567,7 +581,7 @@
         })
     </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <script type="text/javascript" opacity='1' src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
