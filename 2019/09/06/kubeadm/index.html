@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。">
-<meta name="keywords" content="mongodb">
+<meta name="description" content="kubeadm 能帮助您建立一个小型的符合最佳实践的 Kubernetes 集群。">
+<meta name="keywords" content="k8s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb 部署">
-<meta property="og:url" content="http://blog.mooom.top/2017/08/02/mongodb/index.html">
+<meta property="og:title" content="kubeadm">
+<meta property="og:url" content="http://blog.mooom.top/2019/09/06/kubeadm/index.html">
 <meta property="og:site_name" content="MOOOM">
-<meta property="og:description" content="MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。">
+<meta property="og:description" content="kubeadm 能帮助您建立一个小型的符合最佳实践的 Kubernetes 集群。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:07:25.639Z">
+<meta property="og:updated_time" content="2019-09-06T02:29:27.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb 部署">
-<meta name="twitter:description" content="MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。">
+<meta name="twitter:title" content="kubeadm">
+<meta name="twitter:description" content="kubeadm 能帮助您建立一个小型的符合最佳实践的 Kubernetes 集群。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>mongodb 部署 | MOOOM</title>
+<title>kubeadm | MOOOM</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -275,11 +275,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友链" about="关于"/>
 </nav>
-      <div class="body-wrap"><article id="post-mongodb" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-kubeadm" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/08/02/mongodb/" class="article-date">
-      <time datetime="2017-08-02T08:31:59.000Z" itemprop="datePublished">2017-08-02</time>
+      <a href="/2019/09/06/kubeadm/" class="article-date">
+      <time datetime="2019-09-06T02:20:20.000Z" itemprop="datePublished">2019-09-06</time>
 </a>
 
 
@@ -294,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mongodb 部署
+      kubeadm
     </h1>
   
 
@@ -303,13 +303,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+    <a class="article-category-link" href="/categories/集群/">集群</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -319,79 +319,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>MongoDB是一个开源文档数据库，可提供高性能，高可用性和自动缩放。</p>
+        <p>kubeadm 能帮助您建立一个小型的符合最佳实践的 Kubernetes 集群。</p>
 <a id="more"></a>
-<h2 id="MongoDB社区版简介"><a href="#MongoDB社区版简介" class="headerlink" title="MongoDB社区版简介"></a>MongoDB社区版简介</h2><p>MongoDB中的一个记录是一个文档，它是一个由字段和值对组成的数据结构。MongoDB文档类似于JSON对象。字段的值可能包括其他文档，数组和文档数组。</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>高性能<br>丰富查询语言<br>高可用性<br>水平可扩展性<br>支持多种存储引擎</p>
-<h3 id="包内容"><a href="#包内容" class="headerlink" title="包内容"></a>包内容</h3><p>MongoDB在自己的存储库中提供正式支持的软件包。此存储库包含以下软件包：</p>
-<table>
-<thead>
-<tr>
-<th align="left">包名称</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">mongodb-org</td>
-<td align="left">将自动安装以下列出的四个组件包</td>
-</tr>
-<tr>
-<td align="left">mongodb-org-server</td>
-<td align="left">包含mongod守护程序和关联的配置和init脚本。</td>
-</tr>
-<tr>
-<td align="left">mongodb-org-mongos</td>
-<td align="left">包含mongos守护进程。</td>
-</tr>
-<tr>
-<td align="left">mongodb-org-shell</td>
-<td align="left">包含mongoshell。</td>
-</tr>
-<tr>
-<td align="left">mongodb-org-tools</td>
-<td align="left">包含以下的MongoDB工具 mongoimport bsondump, mongodump, mongoexport, mongofiles, mongooplog, mongoperf, mongorestore, mongostat, and mongotop</td>
-</tr>
-</tbody></table>
-<h2 id="安装MongoDB社区版"><a href="#安装MongoDB社区版" class="headerlink" title="安装MongoDB社区版"></a>安装MongoDB社区版</h2><h3 id="Redhat"><a href="#Redhat" class="headerlink" title="Redhat"></a>Redhat</h3><h4 id="配置YUM源"><a href="#配置YUM源" class="headerlink" title="配置YUM源"></a>配置YUM源</h4><p>创建一个/etc/yum.repos.d/mongodb-org-3.4.repo文件，使您可以直接安装MongoDB yum。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mongodb-org-3.4]</span><br><span class="line">name = MongoDB Repository</span><br><span class="line">baseurl = https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/</span><br><span class="line">gpgcheck = 1</span><br><span class="line">enabled = 1</span><br><span class="line">gpgkey = https：// www.mongodb.org/static/pgp/server-3.4.asc</span><br></pre></td></tr></table></figure>
+<p>通过使用 kubeadm, 您的集群会符合 Kubernetes 合规性测试的要求. Kubeadm 也支持其他的集群生命周期操作，比如升级、降级和管理启动引导令牌。</p>
+<h3 id="系统初始化配置"><a href="#系统初始化配置" class="headerlink" title="系统初始化配置"></a>系统初始化配置</h3><h4 id="关闭swap"><a href="#关闭swap" class="headerlink" title="关闭swap"></a>关闭swap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">注释 swap 的那一行</span><br></pre></td></tr></table></figure>
 
-<h4 id="安装MongoDB包"><a href="#安装MongoDB包" class="headerlink" title="安装MongoDB包"></a>安装MongoDB包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+<h4 id="开启转发"><a href="#开启转发" class="headerlink" title="开启转发"></a>开启转发</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;s/#net.ipv4.ip_forward/net.ipv4.ip_forward/g&quot; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
 
-<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><h4 id="导入包APT管理的公钥"><a href="#导入包APT管理的公钥" class="headerlink" title="导入包APT管理的公钥"></a>导入包APT管理的公钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</span><br></pre></td></tr></table></figure>
+<h3 id="安装kubeadmin"><a href="#安装kubeadmin" class="headerlink" title="安装kubeadmin"></a>安装kubeadmin</h3><h4 id="Debian-Ubuntu-阿里云源"><a href="#Debian-Ubuntu-阿里云源" class="headerlink" title="Debian/Ubuntu 阿里云源"></a>Debian/Ubuntu 阿里云源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -</span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure>
 
-<h4 id="为MongoDB创建一个安装源文件"><a href="#为MongoDB创建一个安装源文件" class="headerlink" title="为MongoDB创建一个安装源文件"></a>为MongoDB创建一个安装源文件</h4><p>/etc/apt/sources.list.d/mongodb-org-3.4.list使用适合您的Ubuntu版本的命令创建列表文件：<br>Ubuntu 12.04</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+<h3 id="kubeadm命令"><a href="#kubeadm命令" class="headerlink" title="kubeadm命令"></a>kubeadm命令</h3><h4 id="查看镜像列表"><a href="#查看镜像列表" class="headerlink" title="查看镜像列表"></a>查看镜像列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images list</span><br></pre></td></tr></table></figure>
 
-<p>Ubuntu 14.04</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+<h4 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images pull</span><br></pre></td></tr></table></figure>
 
-<p>Ubuntu 16.04</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+<h4 id="查看指定版本镜像"><a href="#查看指定版本镜像" class="headerlink" title="查看指定版本镜像"></a>查看指定版本镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images list --kubernetes-version v1.15.1</span><br></pre></td></tr></table></figure>
 
-<h4 id="重新加载本地数据源。"><a href="#重新加载本地数据源。" class="headerlink" title="重新加载本地数据源。"></a>重新加载本地数据源。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h4 id="下载指定版本镜像"><a href="#下载指定版本镜像" class="headerlink" title="下载指定版本镜像"></a>下载指定版本镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images pull --kubernetes-version v1.15.1</span><br></pre></td></tr></table></figure>
 
-<h4 id="安装MongoDB包-1"><a href="#安装MongoDB包-1" class="headerlink" title="安装MongoDB包"></a>安装MongoDB包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y mongodb-org</span><br></pre></td></tr></table></figure>
+<h4 id="pull镜像命令生成"><a href="#pull镜像命令生成" class="headerlink" title="pull镜像命令生成"></a>pull镜像命令生成</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config  images list |awk  &apos;&#123;print &quot;docker pull &quot; $1 &#125;&apos;</span><br></pre></td></tr></table></figure>
 
-<h2 id="运行MongoDB社区版"><a href="#运行MongoDB社区版" class="headerlink" title="运行MongoDB社区版"></a>运行MongoDB社区版</h2><h3 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mongod start</span><br></pre></td></tr></table></figure>
+<h4 id="tag命令生成"><a href="#tag命令生成" class="headerlink" title="tag命令生成"></a>tag命令生成</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config  images list |awk -F&quot;/&quot; &apos;&#123;print &quot;docker tag &quot; $1&quot;/&quot;$2 &quot; registry.cn-shenzhen.aliyuncs.com/grc/&quot;$2&#125;&apos;</span><br></pre></td></tr></table></figure>
 
-<h3 id="验证MongoDB是否成功启动"><a href="#验证MongoDB是否成功启动" class="headerlink" title="验证MongoDB是否成功启动"></a>验证MongoDB是否成功启动</h3><p>mongod通过检查日志文件的内容进行/var/log/mongodb/mongod.log 读取，验证进程是否成功启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[initandlisten] waiting for connections on port &lt;port&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="push命令生成"><a href="#push命令生成" class="headerlink" title="push命令生成"></a>push命令生成</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config  images list |awk -F&quot;/&quot; &apos;&#123;print &quot;docker push &quot; $1&quot;/&quot;$2 &quot; registry.cn-shenzhen.aliyuncs.com/grc/&quot;$2&#125;&apos;</span><br></pre></td></tr></table></figure>
 
-<p>其中<port>被配置为在该端口/etc/mongod.conf，27017默认端口</port></p>
-<h3 id="停止MongoDB"><a href="#停止MongoDB" class="headerlink" title="停止MongoDB"></a>停止MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mongod stop</span><br></pre></td></tr></table></figure>
+<h4 id="kubeadm-初始化参数"><a href="#kubeadm-初始化参数" class="headerlink" title="kubeadm 初始化参数"></a>kubeadm 初始化参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init \</span><br><span class="line">#masterip</span><br><span class="line">--apiserver-advertise-address=10.0.52.13 \</span><br><span class="line">#镜像仓库</span><br><span class="line">--image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">#版本设置</span><br><span class="line">--kubernetes-version v1.13.3 \</span><br><span class="line">#网络设置</span><br><span class="line">--service-cidr=10.1.0.0/16 \</span><br><span class="line">#网络设置</span><br><span class="line">--pod-network-cidr=10.244.0.0/16</span><br></pre></td></tr></table></figure>
 
-<h3 id="重新启动MongoDB"><a href="#重新启动MongoDB" class="headerlink" title="重新启动MongoDB"></a>重新启动MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod restart</span><br></pre></td></tr></table></figure>
-
-<h3 id="开始使用MongoDB"><a href="#开始使用MongoDB" class="headerlink" title="开始使用MongoDB"></a>开始使用MongoDB</h3><h2 id="卸载MongoDB社区版"><a href="#卸载MongoDB社区版" class="headerlink" title="卸载MongoDB社区版"></a>卸载MongoDB社区版</h2><p>###停止MongoDB</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除软件包"><a href="#删除软件包" class="headerlink" title="删除软件包"></a>删除软件包</h3><h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge mongodb-org *</span><br></pre></td></tr></table></figure>
-
-<h4 id="redhat"><a href="#redhat" class="headerlink" title="redhat"></a>redhat</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase $(rpm -qa | grep mongodb-org)</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除数据目录"><a href="#删除数据目录" class="headerlink" title="删除数据目录"></a>删除数据目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r / var / log / mongodb</span><br><span class="line">sudo rm -r / var / lib / mongodb</span><br></pre></td></tr></table></figure>
-
-
+<h4 id="重置安装"><a href="#重置安装" class="headerlink" title="重置安装"></a>重置安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm reset</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -399,13 +352,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/08/02/mongodb/">mongodb 部署</a></p>
+        <p><span>本文标题:</span><a href="/2019/09/06/kubeadm/">kubeadm</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">dongs365</a></p>
-        <p><span>发布时间:</span>2017-08-02, 16:31:59</p>
-        <p><span>最后更新:</span>2019-07-12, 16:07:25</p>
+        <p><span>发布时间:</span>2019-09-06, 10:20:20</p>
+        <p><span>最后更新:</span>2019-09-06, 10:29:27</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/08/02/mongodb/" title="mongodb 部署">http://blog.mooom.top/2017/08/02/mongodb/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2017/08/02/mongodb/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/09/06/kubeadm/" title="kubeadm">http://blog.mooom.top/2019/09/06/kubeadm/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.mooom.top/2019/09/06/kubeadm/　　作者: dongs365" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -418,15 +371,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/08/02/mysql-mmm/">
-                    mysql-mmm 部署指南
+                <a href="/2019/09/06/mariadb/">
+                    mariadb
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/08/01/music/">
-                    hexo插入音频
+                <a href="/2019/09/05/kubernetes/">
+                    kubernetes
                 </a>
             </div>
         
@@ -438,7 +391,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB社区版简介"><span class="toc-number">1.</span> <span class="toc-text">MongoDB社区版简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包内容"><span class="toc-number">1.2.</span> <span class="toc-text">包内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装MongoDB社区版"><span class="toc-number">2.</span> <span class="toc-text">安装MongoDB社区版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redhat"><span class="toc-number">2.1.</span> <span class="toc-text">Redhat</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置YUM源"><span class="toc-number">2.1.1.</span> <span class="toc-text">配置YUM源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装MongoDB包"><span class="toc-number">2.1.2.</span> <span class="toc-text">安装MongoDB包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text">Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#导入包APT管理的公钥"><span class="toc-number">2.2.1.</span> <span class="toc-text">导入包APT管理的公钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为MongoDB创建一个安装源文件"><span class="toc-number">2.2.2.</span> <span class="toc-text">为MongoDB创建一个安装源文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重新加载本地数据源。"><span class="toc-number">2.2.3.</span> <span class="toc-text">重新加载本地数据源。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装MongoDB包-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">安装MongoDB包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行MongoDB社区版"><span class="toc-number">3.</span> <span class="toc-text">运行MongoDB社区版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启动MongoDB"><span class="toc-number">3.1.</span> <span class="toc-text">启动MongoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证MongoDB是否成功启动"><span class="toc-number">3.2.</span> <span class="toc-text">验证MongoDB是否成功启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#停止MongoDB"><span class="toc-number">3.3.</span> <span class="toc-text">停止MongoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新启动MongoDB"><span class="toc-number">3.4.</span> <span class="toc-text">重新启动MongoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始使用MongoDB"><span class="toc-number">3.5.</span> <span class="toc-text">开始使用MongoDB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卸载MongoDB社区版"><span class="toc-number">4.</span> <span class="toc-text">卸载MongoDB社区版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除软件包"><span class="toc-number">4.1.</span> <span class="toc-text">删除软件包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ubuntu"><span class="toc-number">4.1.1.</span> <span class="toc-text">ubuntu</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redhat"><span class="toc-number">4.1.2.</span> <span class="toc-text">redhat</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除数据目录"><span class="toc-number">4.2.</span> <span class="toc-text">删除数据目录</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统初始化配置"><span class="toc-number">1.</span> <span class="toc-text">系统初始化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关闭swap"><span class="toc-number">1.1.</span> <span class="toc-text">关闭swap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开启转发"><span class="toc-number">1.2.</span> <span class="toc-text">开启转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装kubeadmin"><span class="toc-number">2.</span> <span class="toc-text">安装kubeadmin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Debian-Ubuntu-阿里云源"><span class="toc-number">2.1.</span> <span class="toc-text">Debian/Ubuntu 阿里云源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kubeadm命令"><span class="toc-number">3.</span> <span class="toc-text">kubeadm命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查看镜像列表"><span class="toc-number">3.1.</span> <span class="toc-text">查看镜像列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载镜像"><span class="toc-number">3.2.</span> <span class="toc-text">下载镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看指定版本镜像"><span class="toc-number">3.3.</span> <span class="toc-text">查看指定版本镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载指定版本镜像"><span class="toc-number">3.4.</span> <span class="toc-text">下载指定版本镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pull镜像命令生成"><span class="toc-number">3.5.</span> <span class="toc-text">pull镜像命令生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tag命令生成"><span class="toc-number">3.6.</span> <span class="toc-text">tag命令生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push命令生成"><span class="toc-number">3.7.</span> <span class="toc-text">push命令生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kubeadm-初始化参数"><span class="toc-number">3.8.</span> <span class="toc-text">kubeadm 初始化参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重置安装"><span class="toc-number">3.9.</span> <span class="toc-text">重置安装</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -474,7 +427,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"mongodb 部署　| MOOOM　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"kubeadm　| MOOOM　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -494,7 +447,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/08/02/mysql-mmm/" title="上一篇: mysql-mmm 部署指南">
+            <a href="/2019/09/06/mariadb/" title="上一篇: mariadb">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -502,7 +455,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/08/01/music/" title="下一篇: hexo插入音频">
+            <a href="/2019/09/05/kubernetes/" title="下一篇: kubernetes">
                 <i class="fa fa-angle-right"></i>
             </a>
         
